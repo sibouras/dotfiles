@@ -161,6 +161,7 @@ alias dpath="find -type d | fzf | sed 's/^..//g' | perl -pe 'chomp' | clip.exe"
 alias cpath="pwd | perl -pe 'chomp' | clip.exe"
 alias neovide="neovide.exe --geometry=200x56"
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias winconfig="/usr/bin/git --git-dir=/mnt/c/users/marzouk/.dotfiles/ --work-tree=/mnt/c/Users/marzouk"
 
 # ZSH_HIGHLIGHT_STYLES[suffix-acias]=fg=cyan,underline
 # ZSH_HIGHLIGHT_STYLES[precommand]=fg=cyan,underline
