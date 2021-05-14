@@ -44,7 +44,7 @@ vnoremap <silent><C-S-Down> :m '>+1<CR>gv=gv
 vnoremap <silent><C-S-Up> :m '<-2<CR>gv=gv
 
 " Improve scroll, credits: https://github.com/Shougo
-nnoremap <expr> zz (winline() == (winheight(0)+1) / 2) ?	
+nnoremap <expr> zz (winline() == (winheight(0)+1) / 2) ?
 			\ 'zt' : (winline() == &scrolloff + 1) ? 'zb' : 'zz'
 noremap <expr> <C-f> max([winheight(0) - 2, 1])
 			\ ."\<C-d>".(line('w$') >= line('$') ? "L" : "H")
@@ -68,8 +68,8 @@ inoremap df <Esc>
 " nnoremap <leader>j :wincmd j<CR>
 " nnoremap <leader>k :wincmd k<CR>
 " nnoremap <leader>l :wincmd l<CR>
-vnoremap J :m '>+1<CR>gv=gv	
-vnoremap K :m '<-2<CR>gv=gv	
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 " copy (write) highlighted text to .vimbuffer
 vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
 " paste from buffer
