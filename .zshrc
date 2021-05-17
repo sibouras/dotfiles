@@ -104,7 +104,8 @@ source $ZSH/oh-my-zsh.sh
 alias dt='cd /mnt/c/Users/marzouk/Desktop'
 alias home='cd /mnt/c/Users/marzouk/'
 alias open='/mnt/c/Windows/explorer.exe'
-alias ii="cmd.exe /C start"
+# alias ii="cmd.exe /C start"
+alias ii="powershell.exe ii"
 alias np='/mnt/c/Program\ Files/Notepad++/notepad++.exe'
 alias chrome='/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
 alias vlc='/mnt/c/Program\ Files/VideoLAN/VLC/vlc.exe'
