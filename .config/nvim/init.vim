@@ -56,7 +56,9 @@ vnoremap <C-s> :<C-u>w<CR>
 cnoremap <C-s> <C-u>w<CR>
 
 " Map Ctrl-Backspace to delete the previous word in insert mode.
-imap <C-BS> <C-W>
+" You need to first press ctrl+v in insert mode before pressing ctrl+backspace to insert the terminal code of ctrl+backspace.
+imap <M-BS> <C-w>
+cmap <M-BS> <C-w>
 
 "clears highlights
 nnoremap <leader>sc :noh<return>
