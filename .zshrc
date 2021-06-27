@@ -154,6 +154,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # Comment this line out to enable default emacs-like bindings
 # bindkey -v
 
+# ctrl-x ctrl-e will open the current command in an editor for multi-line editing. Or in vi style, escape-v.
+export EDITOR=nvim
 
 # fix green background directory color
 if [ -x /usr/bin/dircolors ]; then
