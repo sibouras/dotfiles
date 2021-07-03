@@ -6,9 +6,6 @@ set background=dark
 
 set splitbelow              " Horizontal splits will automatically be below
 set splitright              " Vertical splits will automatically be to the right
-set laststatus=0            " Always display the status line
-set showtabline=2           " Always show tabs
-set noshowmode              " We don't need to see things like -- INSERT -- anymore
 set cmdheight=2             " More space for displaying messages
 set mouse=a                 " Enable your mouse
 set t_Co=256                " Support 256 colors

@@ -19,8 +19,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'michaeljsmith/vim-indent-object'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'machakann/vim-highlightedyank'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+	" Plug 'vim-airline/vim-airline'
+	" Plug 'vim-airline/vim-airline-themes'
+  Plug 'itchyny/lightline.vim'
 	Plug 'ThePrimeagen/vim-be-good'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
@@ -45,9 +46,23 @@ let g:NERDTreeWinSize=28
 let g:highlightedyank_highlight_duration = 200
 
 " Powerline config
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" let g:airline_powerline_fonts = 1
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Status Line
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" The lightline.vim theme
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ }
+
+" Always show statusline
+set laststatus=2
+" Uncomment to prevent non-normal modes showing in powerline and below powerline.
+set noshowmode
+" set showtabline=2           " Always show tabs
 
 " PLUGIN: FZF
 " from https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
