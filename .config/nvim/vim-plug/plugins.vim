@@ -64,11 +64,11 @@ set laststatus=2
 set noshowmode
 " set showtabline=2           " Always show tabs
 
-" PLUGIN: FZF
+" PLUGIN FZF
 " from https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
 nnoremap <silent> <Leader>b  :Buffers<CR>
-nnoremap <silent> <C-f>      :Files<CR>
-nnoremap <silent> <Leader>f  :Rg<CR>
+nnoremap <silent> <Leader>f  :Files<CR>
+nnoremap <silent> <Leader>r  :Rg<CR>
 nnoremap <silent> <Leader>/  :BLines<CR>
 nnoremap <silent> <Leader>'  :Marks<CR>
 nnoremap <silent> <Leader>g  :Commits<CR>

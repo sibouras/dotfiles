@@ -1,6 +1,3 @@
-" set leader key
-let mapleader = " "
-
 " Start new line
 inoremap <S-Return> <C-o>o
 
