@@ -15,7 +15,6 @@ set autoread                " Automatically read a file changed outside of vim
 set nowrap                  " Display long lines as just one line
 set ruler                   " Show the cursor position all the time
 set cmdheight=2             " More space for displaying messages
-set mouse=a                 " Enable your mouse
 set smarttab                " Makes tabbing smarter will realize you have 2 vs 4
 set expandtab               " Converts tabs to spaces
 set updatetime=300          " Faster completion
@@ -35,6 +34,8 @@ set clipboard=unnamedplus   " Copy/paste between vim and other programs.
 set wildmenu                " show wildmenu
 set linebreak               " do not break words.
 set incsearch
+set ignorecase
+set smartcase
 " indent
 set autoindent
 set smartindent

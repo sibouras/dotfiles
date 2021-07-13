@@ -26,6 +26,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'junegunn/vim-easy-align'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+  " The tabular plugin must come before vim-markdown
+  Plug 'godlygeek/tabular'
+  Plug 'plasticboy/vim-markdown'
+  " if you don't have node and yarn, use pre build
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
 call plug#end()
 
@@ -69,6 +76,7 @@ set noshowmode
 nnoremap <silent> <Leader>b  :Buffers<CR>
 nnoremap <silent> <Leader>f  :Files<CR>
 nnoremap <silent> <Leader>r  :Rg<CR>
+nnoremap <silent> <Leader>s  :Snippets<CR>
 nnoremap <silent> <Leader>/  :BLines<CR>
 nnoremap <silent> <Leader>'  :Marks<CR>
 nnoremap <silent> <Leader>g  :Commits<CR>
@@ -88,3 +96,84 @@ xmap ga <Plug>(EasyAlign)
 " easy align
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
+
+
+" UltiSnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"  " use <Tab> to trigger autocompletion
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" vim-markdown
+" disable header folding
+let g:vim_markdown_folding_disabled = 0
+" do not use conceal feature, the implementation is not so good
+let g:vim_markdown_conceal = 0
+" disable math tex conceal feature
+let g:tex_conceal = ""
+let g:vim_markdown_math = 0
+" Allow for the TOC window to auto-fit when it's possible for it to shrink
+let g:vim_markdown_toc_autofit = 1
+" disable adjust new list item indent
+let g:vim_markdown_new_list_item_indent = 0
+
+
+" Vim Tabular
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a; :Tabularize /:\zs<CR>
+vmap <Leader>a; :Tabularize /:\zs<CR>
+
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
+" from https://gist.github.com/sedm0784/dffda43bcfb4728f8e90
+" Auto lists: Automatically continue/end lists by adding markers if the
+" previous line is a list item, or removing them when they are empty
+function! s:auto_list()
+  let l:preceding_line = getline(line(".") - 1)
+  if l:preceding_line =~ '\v^\d+\.\s.'
+    " The previous line matches any number of digits followed by a full-stop
+    " followed by one character of whitespace followed by one more character
+    " i.e. it is an ordered list item
+
+    " Continue the list
+    let l:list_index = matchstr(l:preceding_line, '\v^\d*')
+    call setline(".", l:list_index + 1. ". ")
+  elseif l:preceding_line =~ '\v^\d+\.\s$'
+    " The previous line matches any number of digits followed by a full-stop
+    " followed by one character of whitespace followed by nothing
+    " i.e. it is an empty ordered list item
+
+    " End the list and clear the empty item
+    call setline(line(".") - 1, "")
+  elseif l:preceding_line[0] == "-" && l:preceding_line[1] == " "
+    " The previous line is an unordered list item
+    if strlen(l:preceding_line) == 2
+      " ...which is empty: end the list and clear the empty item
+      call setline(line(".") - 1, "")
+    else
+      " ...which is not empty: continue the list
+      call setline(".", "- ")
+    endif
+  endif
+endfunction
+
+" N.B. Currently only enabled for return key in insert mode, not for normal
+" mode 'o' or 'O'
+inoremap <buffer> <CR> <CR><Esc>:call <SID>auto_list()<CR>A
+
+
+" markdown preview
+" do not close the preview tab when switching to other buffers
+let g:mkdp_auto_close = 0

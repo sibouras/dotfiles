@@ -82,3 +82,6 @@ autocmd BufEnter * silent! lcd %:p:h
 " Automatically removing all trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 " map <C-b> :r ~/.vimbuffer<CR>
+
+" Generate pdf with pandoc
+nnoremap <leader>d :w<CR>:!./md2pdf.sh pfe.md pfe.pdf<CR>
