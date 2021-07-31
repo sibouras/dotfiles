@@ -122,6 +122,7 @@ alias mkd="mkdir -pv"
 alias dirs='dirs -v | head -10'
 # alias vim="nvim"
 alias vi="nvim"
+alias v="nvim"
 alias myip="curl ipinfo.io/ip; echo"
 alias lm="ls -shtr1"
 alias c:="cd /mnt/c"
@@ -177,3 +178,5 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+bindkey '^v' edit-command-line
