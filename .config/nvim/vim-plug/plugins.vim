@@ -137,10 +137,6 @@ function! s:align()
   endif
 endfunction
 
-" N.B. Currently only enabled for return key in insert mode, not for normal
-" mode 'o' or 'O'
-inoremap <buffer> <CR> <CR><Esc>:call <SID>auto_list()<CR>A
-
 
 " markdown preview
 " do not close the preview tab when switching to other buffers
