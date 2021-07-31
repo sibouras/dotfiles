@@ -125,7 +125,6 @@ nmap <Leader>a; :Tabularize /:\zs<CR>
 vmap <Leader>a; :Tabularize /:\zs<CR>
 
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
@@ -136,10 +135,6 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
-
-" N.B. Currently only enabled for return key in insert mode, not for normal
-" mode 'o' or 'O'
-inoremap <buffer> <CR> <CR><Esc>:call <SID>auto_list()<CR>A
 
 
 " markdown preview
