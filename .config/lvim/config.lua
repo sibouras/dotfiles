@@ -1,8 +1,8 @@
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
 -- general
-lvim.format_on_save = true
-lvim.lint_on_save = true
+lvim.format_on_save = false
+lvim.lint_on_save = false
 lvim.lang.javascript.formatters = {
   { exe = "prettier" },
 }
@@ -45,11 +45,15 @@ lvim.keys.insert_mode= {
   [ "." ] = ".<c-g>u",
   [ "!" ] = "!<c-g>u",
   [ "?" ] = "?<c-g>u",
+
 }
 
 -- Map Ctrl-Backspace to delete the previous word in insert mode.
 lvim.keys.insert_mode["<M-BS>"] = "<C-w>"
 vim.cmd("cmap <M-BS> <C-W>")
+-- Ctrl-Backspace in windows terminal(not the same key: showkey -a)
+vim.cmd("imap <C-h> <C-W>")
+vim.cmd("cmap <C-h> <C-W>")
 
 -- jumplit mutations
 vim.cmd("nnoremap <expr> j (v:count > 5 ? \"m'\" . v:count : \"\") . 'j'")
@@ -141,7 +145,8 @@ lvim.plugins = {
       vim.cmd("let g:user_emmet_mode='a'") --enable all function in all mode.
       vim.cmd("let g:user_emmet_leader_key=','")
       vim.cmd("let g:user_emmet_install_global = 0")
-      vim.cmd("autocmd FileType html,css,javascript EmmetInstall")
+      -- vim.cmd("autocmd FileType html,css,javascript EmmetInstall")
+      vim.cmd("autocmd FileType html,css EmmetInstall")
     end,
   },
   {

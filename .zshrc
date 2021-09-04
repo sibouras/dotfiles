@@ -180,3 +180,6 @@ _fzf_compgen_dir() {
 }
 
 bindkey '^v' edit-command-line
+
+# Control + backspace
+bindkey '^H' backward-kill-word
