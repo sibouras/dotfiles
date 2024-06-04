@@ -10,6 +10,9 @@ cd .dotfiles
 then use GNU stow to create symlinks
 
 ```bash
+# the files inside bash belong to the home folder so we don't need --target
+stow bash/
+
 # .zshenv needs to load before .zshrc
 ln -s .dotfiles/.zshenv ../.zshenv
 stow zsh/ --target ~/.config/zsh
