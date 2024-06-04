@@ -22,6 +22,7 @@ stow helix/ --target ~/.config/helix/
 stow git/ --target ~/.config/git/
 stow gitui/ --target ~/.config/gitui/
 stow fish/ --target ~/.config/fish/
+stow yazi/ --target ~/.config/yazi/
 ```
 
 ## Explanation
