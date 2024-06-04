@@ -15,10 +15,13 @@ stow bash/
 
 # .zshenv needs to load before .zshrc
 ln -s .dotfiles/.zshenv ../.zshenv
+# before using --target create an empty ~/.config/zsh
 stow zsh/ --target ~/.config/zsh
 
 stow helix/ --target ~/.config/helix/
 stow git/ --target ~/.config/git/
+stow gitui/ --target ~/.config/gitui/
+stow fish/ --target ~/.config/fish/
 ```
 
 ## Explanation
