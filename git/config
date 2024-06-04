@@ -1,0 +1,15 @@
+[user]
+  name = ala-wsl
+
+[include]
+  # email here
+  path = ./config.local
+
+[init]
+  defaultBranch = main
+
+[alias]
+  diff-words = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  ll = log --stat -p
+  b = branch -vv --sort=-committerdate
