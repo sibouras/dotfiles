@@ -17,30 +17,28 @@ set -x XDG_STATE_HOME $HOME/.local/state
 set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
 
 set fish_greeting # Supresses fish's intro message
-set -x EDITOR "hx"
+set -x EDITOR 'hx'
 
 ### "bat" as manpager
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+set -x MANROFFOPT '-c'
 
 # aliases
-alias v='nvim'
-alias y='yazi'
-alias gu='gitui'
-alias lg='lazygit'
+abbr -a v 'nvim'
+abbr -a y 'yazi'
+abbr -a gu 'gitui'
+abbr -a lg 'lazygit'
 alias reload='source ~/.config/fish/config.fish'
 alias start='/mnt/c/Windows/explorer.exe'
 
 # confirm before overwriting something
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
+abbr -a cp "cp -i"
+abbr -a mv "mv -i"
+abbr -a rm "rm -i"
 
-# Changing "ls" to "exa"
-alias l='exa -al --color=always --group-directories-first --icons'  # my preferred listing
-alias ls='exa -al --color=always --group-directories-first --icons' # my preferred listing
-alias la='exa -a --color=always --group-directories-first --icons'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first --icons'  # long format
-alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
+alias l='eza -la -s Name --binary --git --group-directories-first --icons'
+alias ll='eza -l --group-directories-first --icons' # long format
+alias lt='eza -T --group-directories-first --icons' # tree listing
  
 # Add this to the end of your config file
 zoxide init fish | source
