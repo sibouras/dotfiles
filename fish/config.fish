@@ -9,7 +9,7 @@ fish_add_path ~/.local/bin
 fish_add_path ~/.local/share/bob/nvim-bin
 fish_add_path ~/.local/share/nvim/mason/bin
 
-### EXPORT ###
+### EXPORT
 set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_DATA_HOME $HOME/.local/share
@@ -19,11 +19,11 @@ set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
 set fish_greeting # Supresses fish's intro message
 set -x EDITOR 'hx'
 
-### "bat" as manpager
+# "bat" as manpager
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x MANROFFOPT '-c'
 
-# aliases
+### aliases
 abbr -a v 'nvim'
 abbr -a y 'yazi'
 abbr -a gu 'gitui'
