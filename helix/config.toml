@@ -13,7 +13,7 @@ completion-trigger-len = 1
 bufferline = "multiple"
 default-line-ending = "lf"
 insert-final-newline = false
-# popup-border = "all"
+popup-border = "all"
 
 [editor.cursor-shape]
 normal = "block"
