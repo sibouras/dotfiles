@@ -19,6 +19,8 @@ set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
 set fish_greeting # Supresses fish's intro message
 set -x EDITOR 'hx'
 
+set -x MOAR '--no-statusbar --style=github-dark'
+set -x PAGER 'moar --no-linenumbers -quit-if-one-screen'
 # bat as manpager
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x MANROFFOPT '-c'
@@ -48,8 +50,8 @@ abbr -a rm "rm -i"
 
 alias ls eza
 alias l 'eza -la -s Name --binary --git --group-directories-first --icons'
-alias ll 'eza -l --group-directories-first --icons' # long format
-alias lt 'eza --tree --group-directories-first --icons' # tree listing
+alias ll 'eza -l --group-directories-first --icons'
+alias lt 'eza --tree --group-directories-first --icons'
 
 # Add this to the end of your config file
 zoxide init fish | source
