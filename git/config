@@ -13,3 +13,8 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   ll = log --stat -p
   b = branch -vv --sort=-committerdate
+
+[pager]
+  diff = delta --pager='moar --no-linenumbers -quit-if-one-screen'
+  show = delta --pager='moar -quit-if-one-screen'
+  log = delta --pager='moar -quit-if-one-screen'

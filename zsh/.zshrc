@@ -21,9 +21,10 @@ plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
 
 # aliases
-alias ls='exa --group-directories-first --icons'
-alias ll='ls -lah'
-alias tree='ll --tree --level=2'
+alias ls='eza'
+alias l='eza -la -s Name --binary --git --group-directories-first --icons'
+alias ll='eza -l --group-directories-first --icons'
+alias lt='eza --tree --group-directories-first --icons'
 
 # Setup fzf
 source <(fzf --zsh)
