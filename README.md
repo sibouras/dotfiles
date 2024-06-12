@@ -25,6 +25,9 @@ stow fish/ --target ~/.config/fish/
 stow yazi/ --target ~/.config/yazi/
 ```
 
+NOTE: Install after setting XDG so that stuff gets put where it sould
+TODO: make install script
+
 ## Explanation
 
 to manage nested folders you can create a nested .config structure
@@ -58,7 +61,7 @@ stow -D helix --target=~/.config/helix
 ```
 
 but this does not symlink the whole `helix` directory(it symlinks what's inside it)
-so if you add another file at the root `helix` folder you have to restow
+so if you add another **file** at the root `helix` folder you have to restow
 
 NOTE: try this
 `stow --verbose --restow --target=$HOME --dotfiles $(dirname $0)`
