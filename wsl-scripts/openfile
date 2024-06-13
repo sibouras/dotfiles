@@ -1,0 +1,7 @@
+#! /bin/sh
+# for yazi
+
+for var in "$@"; do
+  /mnt/c/Windows/explorer.exe file://///wsl.localhost/Ubuntu"$var"
+done
+exit 0

@@ -23,6 +23,7 @@ stow git/ --target ~/.config/git/
 stow gitui/ --target ~/.config/gitui/
 stow fish/ --target ~/.config/fish/
 stow yazi/ --target ~/.config/yazi/
+stow wsl-scripts/ --target ~/.local/wsl-scripts/
 ```
 
 NOTE: Install after setting XDG so that stuff gets put where it sould
