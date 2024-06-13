@@ -1,0 +1,4 @@
+#! /bin/sh
+# for lazy.nvim `K`
+
+"/mnt/c/Users/ala/AppData/Local/Mozilla Firefox/firefox.exe" $1

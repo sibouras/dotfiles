@@ -6,6 +6,7 @@ fish_config prompt choose arrow
 
 ### Adding to path
 fish_add_path ~/.local/bin
+fish_add_path ~/.local/wsl-scripts
 fish_add_path ~/.local/share/bob/nvim-bin
 fish_add_path ~/.local/share/nvim/mason/bin
 
