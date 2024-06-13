@@ -2,7 +2,7 @@
 name = "html"
 language-servers = [
   { name = 'emmet-lsp' },
-  { name = 'vscode-html-language-server', except-features = ['format'] }
+  { name = 'vscode-html-language-server', except-features = ['format'] },
 ]
 formatter = { command = "prettierd", args = ["--stdin-filepath", "a.html"] }
 auto-format = false
@@ -15,7 +15,7 @@ formatter = { command = "prettierd", args = ["--stdin-filepath", "a.md"] }
 name = "json"
 language-servers = [
   { name = 'biome' },
-  { name = 'vscode-json-language-server', except-features = ['format'] }
+  { name = 'vscode-json-language-server', except-features = ['format'] },
 ]
 formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.json"] }
 
@@ -23,7 +23,7 @@ formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.json"
 name = "jsonc"
 language-servers = [
   { name = 'biome' },
-  { name = 'vscode-json-language-server', except-features = ['format'] }
+  { name = 'vscode-json-language-server', except-features = ['format'] },
 ]
 formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.jsonc"] }
 
@@ -39,7 +39,7 @@ required-root-patterns = [".taplo.toml"]
 name = "javascript"
 language-servers = [
   { name = 'biome' },
-  { name = 'typescript-language-server', except-features = ['format'] }
+  { name = 'typescript-language-server', except-features = ['format'] },
 ]
 # auto-format = true
 formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.ts"] }
@@ -48,7 +48,7 @@ formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.ts"] 
 name = "typescript"
 language-servers = [
   { name = 'biome' },
-  { name = 'typescript-language-server', except-features = ['format'] }
+  { name = 'typescript-language-server', except-features = ['format'] },
 ]
 # auto-format = true
 formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.ts"] }
@@ -57,7 +57,7 @@ formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.ts"] 
 name = "jsx"
 language-servers = [
   { name = 'biome' },
-  { name = 'typescript-language-server', except-features = ['format'] }
+  { name = 'typescript-language-server', except-features = ['format'] },
 ]
 # auto-format = true
 formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.ts"] }
@@ -66,7 +66,7 @@ formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.ts"] 
 name = "tsx"
 language-servers = [
   { name = 'biome' },
-  { name = 'typescript-language-server', except-features = ['format'] }
+  { name = 'typescript-language-server', except-features = ['format'] },
 ]
 # auto-format = true
 formatter = { command = "biome", args = ["format", "--stdin-file-path", "a.ts"] }
@@ -101,6 +101,6 @@ useESLintClass = false
 validate = "on"
 codeAction = { disableRuleComment = { enable = true, location = "separateLine" }, showDocumentation = { enable = true } }
 codeActionOnSave = { mode = "all" }
-experimental = { }
+experimental = {}
 problems = { shortenToSingleLine = false }
 workingDirectory = { mode = "auto" }
