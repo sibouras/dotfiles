@@ -36,27 +36,38 @@ end
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
-### aliases
 ### bindings
 bind \co __fish_preview_current_file # ctrl+o
 bind \e\[17\;8~ __fish_list_current_token # ctrl+i
+
+### abbreviations
+abbr -a :q exit
 abbr -a v nvim
 abbr -a y yazi
 abbr -a gu gitui
 abbr -a lg lazygit
-alias reload 'source ~/.config/fish/config.fish'
-alias start '/mnt/c/Windows/explorer.exe'
-alias gr 'cd (git rev-parse --show-toplevel)'
 
 # confirm before overwriting something
 abbr -a cp "cp -i"
 abbr -a mv "mv -i"
 abbr -a rm "rm -i"
 
+# Git abbreviations
+abbr -a g 'git'
+abbr -a ga 'git add'
+abbr -a gd 'git diff'
+abbr -a gp 'git push'
+abbr -a gb 'git branch'
+abbr -a gst 'git status'
+abbr -a gr 'cd (git rev-parse --show-toplevel)'
+
+### aliases
 alias ls eza
 alias l 'eza -la -s Name --binary --git --group-directories-first --icons'
 alias ll 'eza -l --group-directories-first --icons'
 alias lt 'eza --tree --group-directories-first --icons'
+alias reload 'source ~/.config/fish/config.fish'
+alias start '/mnt/c/Windows/explorer.exe'
 
 ### functions
 function yy
