@@ -37,6 +37,9 @@ set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
 ### aliases
+### bindings
+bind \co __fish_preview_current_file # ctrl+o
+bind \e\[17\;8~ __fish_list_current_token # ctrl+i
 abbr -a v nvim
 abbr -a y yazi
 abbr -a gu gitui
