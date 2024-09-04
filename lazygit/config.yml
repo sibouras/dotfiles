@@ -4,3 +4,10 @@ gui:
   theme:
     selectedLineBgColor:
       - "#292e42" # set to `default` to have no background colour
+  statusPanelView: allBranchesLog
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+  allBranchesLogCmd: 'git log --color=always --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
