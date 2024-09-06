@@ -8,7 +8,7 @@ sort_reverse = false
 sort_dir_first = true
 show_hidden = true
 show_symlink = true
-linemode = "size"
+# linemode = "size"
 
 [opener]
 edit = [
@@ -86,4 +86,9 @@ prepend_previewers = [
   { mime = "image/*", run = "noop" },
   # Video
   { mime = "video/*", run = "noop" },
+]
+
+prepend_fetchers = [
+  { id = "git", name = "*", run = "git" },
+  { id = "git", name = "*/", run = "git" },
 ]
