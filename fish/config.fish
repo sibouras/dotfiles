@@ -56,6 +56,7 @@ abbr -a rm "rm -i"
 abbr -a g 'git'
 abbr -a ga 'git add'
 abbr -a gd 'git diff'
+abbr -a gds 'git diff --staged'
 abbr -a gp 'git push'
 abbr -a gb 'git branch'
 abbr -a gst 'git status'
