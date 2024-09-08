@@ -1,14 +1,15 @@
 ajeetdsouza/zoxide@v0.9.4
-MordechaiHadad/bob@v3.0.1
+MordechaiHadad/bob@v4.0.1
 dbrgn/tealdeer@v1.6.1
 extrawurst/gitui@v0.26.3
 tpanj/cht.exe@v0.7.2
 antonmedv/fx@35.0.0
 jqlang/jq@jq-1.7.1
 bootandy/dust@v1.1.1
-junegunn/fzf@v0.54.3
+junegunn/fzf@v0.55.0
 dduan/tre@v0.4.0
 zellij-org/zellij@v0.40.1
 walles/moar@v1.26.0
 dandavison/delta@0.18.1
 nushell/nushell@0.97.1
+jesseduffield/lazygit@v0.44.0
