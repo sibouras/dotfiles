@@ -8,6 +8,26 @@
 [init]
   defaultBranch = main
 
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+
+[merge]
+  conflictstyle = diff3
+  tool = nvimdiff
+
+[mergetool]
+  keepBackup = false
+
+[mergetool "nvimdiff"]
+  layout = LOCAL,BASE,REMOTE / MERGED
+
+[diff]
+  colorMoved = default
+  tool = nvimdiff
+
 [alias]
   wdiff = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
   lg = log --graph --pretty=tformat:'%C(auto)%h%C(auto)%d%Creset %s %C(dim white)(%cd)%Creset' --date=relative
