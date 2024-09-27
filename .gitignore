@@ -1,2 +1,3 @@
 git/config.local
-yazi/plugins
+yazi/plugins/*
+!yazi/plugins/first-file.yazi
