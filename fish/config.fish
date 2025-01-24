@@ -53,7 +53,6 @@ abbr -a mv "mv -i"
 abbr -a rm "rm -i"
 
 # Git abbreviations
-abbr -a g 'git'
 abbr -a ga 'git add'
 abbr -a gd 'git diff'
 abbr -a gds 'git diff --staged'
@@ -63,6 +62,7 @@ abbr -a gst 'git status'
 abbr -a gr 'cd (git rev-parse --show-toplevel)'
 
 ### aliases
+alias g 'git --no-pager'
 alias ls eza
 alias l 'eza -la -s Name --binary --git --group-directories-first --icons'
 alias ll 'eza -l --group-directories-first --icons'
