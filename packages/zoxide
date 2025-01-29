@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# https://github.com/ajeetdsouza/zoxide
+# The recommended way to install zoxide is via the install script:
+
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+
+# installation output
+
+# Detected architecture: x86_64-unknown-linux-musl
+# Downloaded package: zoxide.tar.gz
+# Installed zoxide to /home/bouras/.local/bin
+# Installed manpages to /home/bouras/.local/share/man
+
+# zoxide is installed!

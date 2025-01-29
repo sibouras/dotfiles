@@ -3,33 +3,24 @@
 ## Installation
 
 ```bash
-git clone link .dotfiles
-cd .dotfiles
+git clone https://github.com/sibouras/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./setup.sh
 ```
 
 then use GNU stow to create symlinks
 
+before stowing make sure the directory exists and doesn't have a duplicate file
+
 ```bash
-# the files inside bash belong to the home folder so we don't need --target
-stow bash/
-
-# .zshenv needs to load before .zshrc
-ln -s .dotfiles/.zshenv ../.zshenv
-# before using --target create an empty ~/.config/zsh
-stow zsh/ --target ~/.config/zsh
-
-stow helix/ --target ~/.config/helix/
-stow git/ --target ~/.config/git/
-stow gitui/ --target ~/.config/gitui/
-stow fish/ --target ~/.config/fish/
-stow yazi/ --target ~/.config/yazi/
-stow wsl-scripts/ --target ~/.local/wsl-scripts/
+# ~/.config/git folder is not empty
+stow git --target ~/.config/git/
+# WARNING! stowing git would cause conflicts:
+#   * existing target is neither a link nor a directory: config
+# All operations aborted.
 ```
 
-NOTE: Install after setting XDG so that stuff gets put where it sould
-TODO: make install script
-
-## Explanation
+## stow explanation
 
 to manage nested folders you can create a nested .config structure
 
@@ -56,13 +47,27 @@ or instead of creating the nested .config structure, use `--target`
 ```bash
 # to stow
 mkdir ~/.config/helix
-stow helix --target=~/.config/helix
+stow helix --target ~/.config/helix
 # to unstow:
-stow -D helix --target=~/.config/helix
+stow -D helix --target ~/.config/helix
 ```
 
 but this does not symlink the whole `helix` directory(it symlinks what's inside it)
 so if you add another **file** at the root `helix` folder you have to restow
+
+use `--restow`: Restow packages (first unstow, then stow again) for pruning
+obsolete symlinks from the target tree.
+
+for example after deleting config.local we have a broken symlink
+
+```bash
+stow --verbose --restow git --target ~/.config/git
+# UNLINK: config
+# UNLINK: ignore
+# UNLINK: config.local
+# LINK: config => ../../.dotfiles/git/config (reverts previous action)
+# LINK: ignore => ../../.dotfiles/git/ignore (reverts previous action)
+```
 
 NOTE: try this
 `stow --verbose --restow --target=$HOME --dotfiles $(dirname $0)`

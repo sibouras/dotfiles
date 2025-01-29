@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# https://github.com/helix-editor/helix
+
+# https://github.com/thomasschafer/dotfiles/blob/main/helix/setup.sh
+
+# install helix from source
+# install rust toolchain
+function install_rust() {
+  if ! command -v cargo &>/dev/null; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    . "$HOME/.cargo/env"
+  fi
+}
+install_rust
+# install gcc
+sudo apt install build-essential
+# install xclip for clipboard paste support
+sudo apt install xclip
+
+mkdir -p ~/src
+git clone https://github.com/helix-editor/helix ~/src/helix
+cd ~/src/helix
+git --no-pager log --graph --pretty=tformat:'%C(auto)%h%C(auto)%d%Creset %s %C(dim white)(%cd)%Creset' --date=relative --max-count=10
+cargo install --path helix-term --locked

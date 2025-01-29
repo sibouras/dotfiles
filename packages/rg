@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# https://github.com/BurntSushi/ripgrep
+
+sudo dra download -i -s "ripgrep_{tag}-1_amd64.deb" BurntSushi/ripgrep
+
+# dra download -i -s "ripgrep-{tag}-x86_64-unknown-linux-musl.tar.gz" -o ~/.local/bin BurntSushi/ripgrep
+
+# rg --generate complete-bash > ~/.local/share/bash-completion/completions/rg
+# rg --generate complete-zsh > ~/.local/share/zsh-completion/_rg

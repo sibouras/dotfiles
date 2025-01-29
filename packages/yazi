@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/sxyazi/yazi
+
+dra download -s yazi-x86_64-unknown-linux-gnu.zip -I yazi -I ya -o ~/.local/bin/ sxyazi/yazi

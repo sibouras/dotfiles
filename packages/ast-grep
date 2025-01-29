@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# https://github.com/ast-grep/ast-grep
+
+dra download -a -i -o ~/.local/bin/sg ast-grep/ast-grep
+
+sg completions bash > ~/.local/share/bash-completion/completions/sg
+sg completions zsh > ~/.local/share/zsh-completion/_sg
+sg completions fish > ~/.config/fish/completions/sg.fish

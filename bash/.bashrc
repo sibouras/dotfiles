@@ -3,13 +3,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
 
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-. "$HOME/.cargo/env"
+export HELIX_RUNTIME=~/src/helix/runtime
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -100,12 +96,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ls='eza'
-alias l='eza -la -s Name --binary --git --group-directories-first --icons'
-alias ll='eza -l --group-directories-first --icons'
-alias lt='eza --tree --group-directories-first --icons'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -130,5 +120,37 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Setup fzf
-eval "$(fzf --bash)"
+# make tab completion case-insensitive
+bind 'set completion-ignore-case on'
+
+# bind xoff to ctrl+p (and ctrl+q still unfreezes)
+# This automatically frees up ctrl+s for forward-search-history
+stty stop '^p'
+
+# aliases
+# eza aliases
+if [ -x ~/.local/bin/eza ]; then
+    alias ls='eza'
+    alias l='eza -la -s Name --binary --git --group-directories-first --icons'
+    alias ll='eza -l --group-directories-first --icons'
+    alias lt='eza --tree --group-directories-first --icons'
+fi
+
+# use single quotes ' to prevent bash from expanding the variable when creating the alias
+alias mypath='echo "$PATH" | sed "s/:/\n/g"'
+alias y=yazi
+alias reload="source ~/.bashrc"
+
+# Set up fzf key bindings and fuzzy completion
+if [[ ! "$PATH" == *"$HOME/src/fzf/bin"* ]]; then
+    PATH="$HOME/src/fzf/bin:$PATH"
+fi
+if command -v fzf > /dev/null; then
+    eval "$(fzf --bash)"
+fi
+
+# setup zoxide
+# [ -x ~/.local/bin/zoxide ] && eval "$(zoxide init bash)"
+if command -v zoxide > /dev/null; then
+    eval "$(zoxide init bash)"
+fi

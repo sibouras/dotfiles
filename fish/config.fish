@@ -7,6 +7,8 @@ end
 ### Adding to path
 fish_add_path ~/.local/bin
 fish_add_path ~/.local/wsl-scripts
+fish_add_path ~/.cargo/bin
+fish_add_path ~/src/fzf/bin
 fish_add_path ~/.local/share/bob/nvim-bin
 fish_add_path ~/.local/share/nvim/mason/bin
 
@@ -15,9 +17,9 @@ set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
-set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
 
 set fish_greeting # Supresses fish's intro message
+set -x HELIX_RUNTIME ~/src/helix/runtime
 set -x EDITOR hx
 
 set -x MOAR '--no-statusbar --style=github-dark'
@@ -33,8 +35,8 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+# set --export BUN_INSTALL "$HOME/.bun"
+# set --export PATH $BUN_INSTALL/bin $PATH
 
 ### bindings
 bind \co __fish_preview_current_file # ctrl+o
@@ -69,6 +71,7 @@ alias ll 'eza -l --group-directories-first --icons'
 alias lt 'eza --tree --group-directories-first --icons'
 alias reload 'source ~/.config/fish/config.fish'
 alias start '/mnt/c/Windows/explorer.exe'
+alias mypath 'echo "$PATH" | sed "s/:/\n/g"'
 
 ### functions
 function yy

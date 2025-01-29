@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# https://github.com/junegunn/fzf
+
+[ ! -d ~/src/fzf ] && git clone --depth 1 https://github.com/junegunn/fzf.git ~/src/fzf || git -C ~/src/fzf pull
+
+# ~/src/fzf/install --key-bindings --completion --no-update-rc
+~/src/fzf/install --bin

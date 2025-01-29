@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# https://github.com/eza-community/eza
+
+dra download -i -s eza_x86_64-unknown-linux-musl.tar.gz -o ~/.local/bin/eza eza-community/eza
+
+# Download bash completion
+curl -o ~/.local/share/bash-completion/completions/eza https://raw.githubusercontent.com/eza-community/eza/main/completions/bash/eza
+# Download zsh completion
+curl -o ~/.local/share/zsh-completion/_eza https://raw.githubusercontent.com/eza-community/eza/main/completions/zsh/_eza
+# Download fish completion
+curl -o ~/.config/fish/completions/eza.fish https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/completions/fish/eza.fish
+
+# TODO: download man page and fish completions
+# https://github.com/eza-community/eza/blob/main/devtools/deb-package.sh
+# cd ~/downloads
+# dra download -s "man-{tag}.tar.gz" eza-community/eza
+# tar tvf man-0.20.18.tar.gz
+# shell substitution

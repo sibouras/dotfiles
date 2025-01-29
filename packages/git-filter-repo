@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# https://github.com/newren/git-filter-repo
+
+curl -Lo ~/.local/bin/git-filter-repo https://raw.githubusercontent.com/newren/git-filter-repo/main/git-filter-repo
+[ ! -x ~/.local/bin/git-filter-repo ] && chmod +x ~/.local/bin/git-filter-repo

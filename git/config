@@ -1,12 +1,12 @@
 [user]
-  name = ala-wsl
-
-[include]
-  # email here
-  path = ./config.local
+  name = sibouras
+  email = sibouras@users.noreply.github.com
 
 [init]
   defaultBranch = main
+
+[core]
+  pager = # empty pager for faster `git branch` or use `git --no-pager`
 
 [interactive]
   diffFilter = delta --color-only

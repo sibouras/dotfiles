@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/fastfetch-cli/fastfetch
+
+sudo dra download -i -s "fastfetch-linux-amd64.deb" fastfetch-cli/fastfetch

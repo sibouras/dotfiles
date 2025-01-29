@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# github.com/extrawurst/gitui
+
+dra download -i -s "gitui-linux-x86_64.tar.gz" -o ~/.local/bin/gitui extrawurst/gitui

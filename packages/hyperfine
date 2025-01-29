@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/sharkdp/hyperfine
+
+sudo dra download -i -s "hyperfine_{tag}_amd64.deb" sharkdp/hyperfine
