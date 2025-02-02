@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# https://github.com/jdx/mise
+
+# NOTE: to update mise
+# mise self-update
+
+# curl https://mise.run | sh
+# mise: installed successfully to ~/.local/bin/mise
+
+# or if you're allergic to | sh
+curl https://mise.jdx.dev/mise-latest-linux-x64 > ~/.local/bin/mise
+chmod +x ~/.local/bin/mise
+
+# mise is required to get the autocompetion working
+mise use -g usage
+
+# generate autocompletion for fish
+mise completion fish > ~/.config/fish/completions/mise.fish
+
+# install man page
+sudo mkdir -p /usr/local/share/man/man1
+sudo curl -o /usr/local/share/man/man1/mise.1 https://raw.githubusercontent.com/jdx/mise/refs/heads/main/man/man1/mise.1
+
+# in config.fish
+# mise activate method updates your environment variable and PATH every time
+# your prompt is run to ensure you use the correct versions.
+# command -q mise && mise activate fish | source # use PATH; slower prompt
+# fish_add_path ~/.local/share/mise/shims # or use shims; slower startup of node

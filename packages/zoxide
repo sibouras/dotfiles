@@ -9,7 +9,7 @@ curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh 
 
 # Detected architecture: x86_64-unknown-linux-musl
 # Downloaded package: zoxide.tar.gz
-# Installed zoxide to /home/bouras/.local/bin
-# Installed manpages to /home/bouras/.local/share/man
+# Installed zoxide to ~/.local/bin
+# Installed manpages to ~/.local/share/man
 
 # zoxide is installed!

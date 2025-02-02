@@ -83,5 +83,5 @@ function yy
     rm -f -- "$tmp"
 end
 
-# Add this to the end of your config file
-zoxide init fish | source
+# setup zoxide
+command -q zoxide && zoxide init fish | source

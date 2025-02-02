@@ -11,9 +11,18 @@ curl -o ~/.local/share/zsh-completion/_eza https://raw.githubusercontent.com/eza
 # Download fish completion
 curl -o ~/.config/fish/completions/eza.fish https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/completions/fish/eza.fish
 
-# TODO: download man page and fish completions
-# https://github.com/eza-community/eza/blob/main/devtools/deb-package.sh
-# cd ~/downloads
-# dra download -s "man-{tag}.tar.gz" eza-community/eza
-# tar tvf man-0.20.18.tar.gz
-# shell substitution
+# install man page
+# https://askubuntu.com/questions/244809/how-do-i-manually-install-a-man-page-file
+TMP_DIR=$(mktemp --directory)
+dra download -s "man-{tag}.tar.gz" -o "$TMP_DIR/eza-man.tar.gz" eza-community/eza
+tar xf "$TMP_DIR/eza-man.tar.gz" --directory="$TMP_DIR"
+# move nested files to tmp_dir
+find "$TMP_DIR/target/" -type f -exec mv {} "$TMP_DIR" \;
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp "$TMP_DIR/eza.1" /usr/local/share/man/man1/
+sudo mkdir -p /usr/local/share/man/man5
+sudo cp "$TMP_DIR/eza_colors.5" /usr/local/share/man/man5/
+sudo cp "$TMP_DIR/eza_colors-explanation.5" /usr/local/share/man/man5/
+rm -r "$TMP_DIR"
+# Run the mandb command. This will update man's internal database:
+# sudo mandb

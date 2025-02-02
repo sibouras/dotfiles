@@ -141,7 +141,7 @@ alias mypath='echo "$PATH" | sed "s/:/\n/g"'
 alias y=yazi
 alias reload="source ~/.bashrc"
 
-# Set up fzf key bindings and fuzzy completion
+# setup fzf key bindings and fuzzy completion
 if [[ ! "$PATH" == *"$HOME/src/fzf/bin"* ]]; then
     PATH="$HOME/src/fzf/bin:$PATH"
 fi

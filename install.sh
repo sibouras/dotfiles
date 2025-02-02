@@ -54,7 +54,7 @@ echo "stowing config files"
 echo "stowing completed"
 
 # install essentials
-sudo apt install build-essential xclip
+sudo apt install build-essential xclip zip unzip
 
 # install binaries
 ./packages/eza
