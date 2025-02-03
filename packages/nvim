@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# https://github.com/neovim/neovim
+
+set -euo pipefail
+
+# https://github.com/neovim/neovim/blob/master/BUILD.md
+# sudo apt install ninja-build gettext cmake curl build-essential
+
+# tarball
+TMP_DIR=$(mktemp --directory)
+dra download -s "nvim-linux-x86_64.tar.gz" -o "$TMP_DIR/nvim.tar.gz" neovim/neovim
+tar -xzf "$TMP_DIR/nvim.tar.gz" --directory="$TMP_DIR"
+mkdir -p ~/src
+cp -r "$TMP_DIR/nvim-linux-x86_64" ~/src/nvim
+rm -r "$TMP_DIR"
