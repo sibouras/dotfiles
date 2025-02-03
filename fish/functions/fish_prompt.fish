@@ -74,7 +74,7 @@ function fish_prompt
         set arrow "$arrow_color# "
     end
 
-    set -l cwd $cyan(basename (prompt_pwd))
+    set -l cwd $cyan(prompt_pwd --full-length-dirs=3)
 
     set -l repo_info
     if set -l repo_type (_repo_type)

@@ -9,7 +9,7 @@ fish_add_path ~/.local/bin
 fish_add_path ~/.local/wsl-scripts
 fish_add_path ~/.cargo/bin
 fish_add_path ~/src/fzf/bin
-fish_add_path ~/.local/share/bob/nvim-bin
+fish_add_path ~/src/nvim/bin
 fish_add_path ~/.local/share/nvim/mason/bin
 
 ### Environment variables
