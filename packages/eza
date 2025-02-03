@@ -15,7 +15,7 @@ curl -o ~/.config/fish/completions/eza.fish https://raw.githubusercontent.com/ez
 # https://askubuntu.com/questions/244809/how-do-i-manually-install-a-man-page-file
 TMP_DIR=$(mktemp --directory)
 dra download -s "man-{tag}.tar.gz" -o "$TMP_DIR/eza-man.tar.gz" eza-community/eza
-tar xf "$TMP_DIR/eza-man.tar.gz" --directory="$TMP_DIR"
+tar -xf "$TMP_DIR/eza-man.tar.gz" --directory="$TMP_DIR"
 # move nested files to tmp_dir
 find "$TMP_DIR/target/" -type f -exec mv {} "$TMP_DIR" \;
 sudo mkdir -p /usr/local/share/man/man1
