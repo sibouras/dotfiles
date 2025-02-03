@@ -16,9 +16,10 @@ export FPATH
 
 # Set up the prompt
 
-autoload -Uz promptinit
-promptinit
-prompt oliver
+# Enable colors and change prompt:
+autoload -U colors && colors	# Load colors
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%} %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+setopt autocd		# Automatically cd into typed directory.
 
 setopt histignorealldups sharehistory
 
@@ -28,6 +29,10 @@ bindkey -e
 # bind xoff to ctrl+p (and ctrl+q still unfreezes)
 # This automatically frees up ctrl+s for forward-search-history
 stty stop '^p'
+
+# edit line in editor with ctrl-o:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^o' edit-command-line
 
 # Keep 10000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
@@ -54,7 +59,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' menu select=long
+# zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
@@ -90,7 +95,12 @@ alias reload="source ~/.config/zsh/.zshrc"
 # --------------------
 
 # Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+if command -v fzf > /dev/null; then
+    source <(fzf --zsh)
+fi
 
 # setup zoxide
-[ -x ~/.local/bin/zoxide ] && eval "$(zoxide init zsh)"
+# [ -x ~/.local/bin/zoxide ] && eval "$(zoxide init zsh)"
+if command -v zoxide > /dev/null; then
+    eval "$(zoxide init zsh)"
+fi
