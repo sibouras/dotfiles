@@ -58,10 +58,22 @@ echo "stowing completed"
 sudo apt install build-essential xclip zip unzip
 
 # install binaries
+./packages/ast-grep
+./packages/bat
+./packages/delta
+./packages/dust
 ./packages/eza
-./packages/fzf
-./packages/tldr
-./packages/rg
-./packages/fd
-./packages/yazi
 ./packages/fastfetch
+./packages/fd
+./packages/fnm
+./packages/fzf
+./packages/git-filter-repo
+./packages/gitui
+./packages/hyperfine
+./packages/lazygit
+./packages/moar
+./packages/rg
+./packages/tldr
+./packages/watchexec
+./packages/yazi
+./packages/zoxide

@@ -2,6 +2,8 @@
 
 # https://github.com/eza-community/eza
 
+set -eu
+
 dra download -i -s eza_x86_64-unknown-linux-musl.tar.gz -o ~/.local/bin/eza eza-community/eza
 
 # Download bash completion
