@@ -5,6 +5,8 @@ path=(
     ~/.local/wsl-scripts
     ~/.cargo/bin
     ~/src/fzf/bin
+    ~/src/nvim/bin
+    ~/.local/share/nvim/mason/bin
     $path
 )
 export PATH
