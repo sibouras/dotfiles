@@ -1,5 +1,6 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
+# do nothing if not inside an interactive shell.
+if not status is-interactive
+    return 0
 end
 
 # fish_config prompt choose arrow
