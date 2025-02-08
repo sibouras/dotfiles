@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# https://github.com/equalsraf/win32yank
+
+set -eu
+
+TMP_DIR=$(mktemp --directory)
+dra download -s "win32yank-x64.zip" -o "$TMP_DIR" equalsraf/win32yank
+unzip -p "$TMP_DIR/win32yank-x64.zip" win32yank.exe >"$TMP_DIR/win32yank.exe"
+chmod +x "$TMP_DIR/win32yank.exe"
+cp "$TMP_DIR/win32yank.exe" ~/.local/bin/
+rm -r "$TMP_DIR"

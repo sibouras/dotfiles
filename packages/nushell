@@ -7,7 +7,7 @@ set -eu
 TMP_DIR=$(mktemp --directory)
 dra download -s "nu-{tag}-x86_64-unknown-linux-gnu.tar.gz" -o "$TMP_DIR/nushell.tar.gz" nushell/nushell
 tar -xf "$TMP_DIR/nushell.tar.gz" --directory="$TMP_DIR"
-find "$TMP_DIR" -mindepth 2 -name 'nu*' -exec mv {} "$TMP_DIR" \; 
+find "$TMP_DIR" -mindepth 2 -name 'nu*' -exec mv {} "$TMP_DIR" \;
 mkdir -p ~/.local/share/nushell
 cp "$TMP_DIR/nu" ~/.local/bin/
 cp "$TMP_DIR"/nu_plugin_* ~/.local/share/nushell/

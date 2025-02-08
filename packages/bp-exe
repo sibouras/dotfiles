@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# https://github.com/printfn/bp
+
+set -eu
+
+TMP_DIR=$(mktemp --directory)
+dra download -s "bp-windows-x86_64.zip" -o "$TMP_DIR/bp-windows.zip" printfn/bp
+unzip "$TMP_DIR/bp-windows.zip" -d "$TMP_DIR"
+chmod +x "$TMP_DIR/bp.exe"
+cp "$TMP_DIR/bp.exe" ~/.local/bin/
+rm -r "$TMP_DIR"
