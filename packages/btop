@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# https://github.com/aristocratos/btop
+
+set -eu
+
+TMP_DIR=$(mktemp --directory)
+dra download -s "btop-x86_64-linux-musl.tbz" -o "$TMP_DIR/btop.tbz" aristocratos/btop
+tar -xf "$TMP_DIR/btop.tbz" --directory="$TMP_DIR"
+mkdir -p ~/src
+cp -r "$TMP_DIR/btop" ~/src/
+rm -r "$TMP_DIR"
+cd ~/src/btop
+sudo make install
+# to uninstall
+# sudo make uninstall

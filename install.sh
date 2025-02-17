@@ -60,6 +60,7 @@ sudo apt install build-essential xclip zip unzip
 # install binaries
 ./packages/ast-grep
 ./packages/bat
+./packages/btop
 ./packages/delta
 ./packages/dust
 ./packages/eza
@@ -72,6 +73,7 @@ sudo apt install build-essential xclip zip unzip
 ./packages/hyperfine
 ./packages/lazygit
 ./packages/moar
+./packages/ouch
 ./packages/rg
 ./packages/tldr
 ./packages/watchexec

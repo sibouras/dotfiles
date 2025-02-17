@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# https://github.com/ouch-org/ouch
+
+set -eu
+
+TMP_DIR=$(mktemp --directory)
+dra download -s "ouch-x86_64-unknown-linux-gnu.tar.gz" -o "$TMP_DIR/ouch.tar.gz" ouch-org/ouch
+# strip 1 leading component from file names on extraction.
+tar --strip-components=1 -xf "$TMP_DIR/ouch.tar.gz" --directory="$TMP_DIR"
+# binary
+cp "$TMP_DIR/ouch" ~/.local/bin/
+# completions
+cp "$TMP_DIR/completions/ouch.bash" ~/.local/share/bash-completion/completions/ouch
+cp "$TMP_DIR/completions/_ouch" ~/.local/share/zsh-completion/
+cp "$TMP_DIR/completions/ouch.fish" ~/.config/fish/completions/
+# man page
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp "$TMP_DIR"/man/*.1 /usr/local/share/man/man1/
+rm -r "$TMP_DIR"
+# Run the mandb command. This will update man's internal database:
+# sudo mandb
