@@ -38,7 +38,7 @@ complete -c sg -n "__fish_sg_needs_command" -f -a "help" -d 'Print this message 
 complete -c sg -n "__fish_sg_using_subcommand run" -s p -l pattern -d 'AST pattern to match' -r
 complete -c sg -n "__fish_sg_using_subcommand run" -l selector -d 'AST kind to extract sub-part of pattern to match' -r
 complete -c sg -n "__fish_sg_using_subcommand run" -s r -l rewrite -d 'String to replace the matched AST node' -r
-complete -c sg -n "__fish_sg_using_subcommand run" -s l -l lang -d 'The language of the pattern. Supported languages are: [Bash, C, Cpp, CSharp, Css, Elixir, Go, Haskell, Html, Java, JavaScript, Json, Kotlin, Lua, Php, Python, Ruby, Rust, Scala, Swift, Tsx, TypeScript, Yaml]' -r
+complete -c sg -n "__fish_sg_using_subcommand run" -s l -l lang -d 'The language of the pattern. Supported languages are: [Bash, C, Cpp, CSharp, Css, Elixir, Go, Haskell, Html, Java, JavaScript, Json, Kotlin, Lua, Nix, Php, Python, Ruby, Rust, Scala, Solidity, Swift, Tsx, TypeScript, Yaml]' -r
 complete -c sg -n "__fish_sg_using_subcommand run" -l debug-query -d 'Print query pattern\'s tree-sitter AST. Requires lang be set explicitly' -r -f -a "pattern\t'Print the query parsed in Pattern format'
 ast\t'Print the query in tree-sitter AST format, only named nodes are shown'
 cst\t'Print the query in tree-sitter CST format, both named and unnamed nodes are shown'
@@ -47,7 +47,8 @@ complete -c sg -n "__fish_sg_using_subcommand run" -l strictness -d 'The strictn
 smart\t'Match all node except source trivial nodes'
 ast\t'Match only ast nodes'
 relaxed\t'Match ast node except comments'
-signature\t'Match ast node except comments, without text'"
+signature\t'Match ast node except comments, without text'
+template\t'Similar to smart but match text only, node kinds are ignored'"
 complete -c sg -n "__fish_sg_using_subcommand run" -l no-ignore -d 'Do not respect hidden file system or ignore files (.gitignore, .ignore, etc.)' -r -f -a "hidden\t'Search hidden files and directories. By default, hidden files and directories are skipped'
 dot\t'Don\'t respect .ignore files. This does *not* affect whether ast-grep will ignore files and directories whose names begin with a dot. For that, use --no-ignore hidden'
 exclude\t'Don\'t respect ignore files that are manually configured for the repository such as git\'s \'.git/info/exclude\''
@@ -56,7 +57,7 @@ parent\t'Don\'t respect ignore files (.gitignore, .ignore, etc.) in parent direc
 vcs\t'Don\'t respect version control ignore files (.gitignore, etc.). This implies --no-ignore parent for VCS files. Note that .ignore files will continue to be respected'"
 complete -c sg -n "__fish_sg_using_subcommand run" -l globs -d 'Include or exclude file paths' -r
 complete -c sg -n "__fish_sg_using_subcommand run" -s j -l threads -d 'Set the approximate number of threads to use' -r
-complete -c sg -n "__fish_sg_using_subcommand run" -l json -d 'Output matches in structured JSON ' -r -f -a "pretty\t'Prints the matches as a pretty-printed JSON array, with indentation and line breaks. This is useful for human readability, but not for parsing by other programs. This is the default value for the `--json` option'
+complete -c sg -n "__fish_sg_using_subcommand run" -l json -d 'Output matches in structured JSON' -r -f -a "pretty\t'Prints the matches as a pretty-printed JSON array, with indentation and line breaks. This is useful for human readability, but not for parsing by other programs. This is the default value for the `--json` option'
 stream\t'Prints each match as a separate JSON object, followed by a newline character. This is useful for streaming the output to other programs that can read one object per line'
 compact\t'Prints the matches as a single-line JSON array, without any whitespace. This is useful for saving space and minimizing the output size'"
 complete -c sg -n "__fish_sg_using_subcommand run" -l color -d 'Controls output color' -r -f -a "auto\t'Try to use colors, but don\'t force the issue. If the output is piped to another program, or the console isn\'t available on Windows, or if TERM=dumb, or if `NO_COLOR` is defined, for example, then don\'t use colors'
@@ -98,7 +99,7 @@ parent\t'Don\'t respect ignore files (.gitignore, .ignore, etc.) in parent direc
 vcs\t'Don\'t respect version control ignore files (.gitignore, etc.). This implies --no-ignore parent for VCS files. Note that .ignore files will continue to be respected'"
 complete -c sg -n "__fish_sg_using_subcommand scan" -l globs -d 'Include or exclude file paths' -r
 complete -c sg -n "__fish_sg_using_subcommand scan" -s j -l threads -d 'Set the approximate number of threads to use' -r
-complete -c sg -n "__fish_sg_using_subcommand scan" -l json -d 'Output matches in structured JSON ' -r -f -a "pretty\t'Prints the matches as a pretty-printed JSON array, with indentation and line breaks. This is useful for human readability, but not for parsing by other programs. This is the default value for the `--json` option'
+complete -c sg -n "__fish_sg_using_subcommand scan" -l json -d 'Output matches in structured JSON' -r -f -a "pretty\t'Prints the matches as a pretty-printed JSON array, with indentation and line breaks. This is useful for human readability, but not for parsing by other programs. This is the default value for the `--json` option'
 stream\t'Prints each match as a separate JSON object, followed by a newline character. This is useful for streaming the output to other programs that can read one object per line'
 compact\t'Prints the matches as a single-line JSON array, without any whitespace. This is useful for saving space and minimizing the output size'"
 complete -c sg -n "__fish_sg_using_subcommand scan" -l color -d 'Controls output color' -r -f -a "auto\t'Try to use colors, but don\'t force the issue. If the output is piped to another program, or the console isn\'t available on Windows, or if TERM=dumb, or if `NO_COLOR` is defined, for example, then don\'t use colors'
@@ -112,6 +113,7 @@ complete -c sg -n "__fish_sg_using_subcommand scan" -s A -l after -d 'Show NUM l
 complete -c sg -n "__fish_sg_using_subcommand scan" -s B -l before -d 'Show NUM lines before each match' -r
 complete -c sg -n "__fish_sg_using_subcommand scan" -s C -l context -d 'Show NUM lines around each match' -r
 complete -c sg -n "__fish_sg_using_subcommand scan" -s c -l config -d 'Path to ast-grep root config, default is sgconfig.yml' -r -F
+complete -c sg -n "__fish_sg_using_subcommand scan" -l include-metadata -d 'Include rule metadata in the json output'
 complete -c sg -n "__fish_sg_using_subcommand scan" -l follow -d 'Follow symbolic links'
 complete -c sg -n "__fish_sg_using_subcommand scan" -l stdin -d 'Enable search code from StdIn'
 complete -c sg -n "__fish_sg_using_subcommand scan" -s i -l interactive -d 'Start interactive edit session'
@@ -124,7 +126,8 @@ complete -c sg -n "__fish_sg_using_subcommand test" -s c -l config -d 'Path to a
 complete -c sg -n "__fish_sg_using_subcommand test" -l skip-snapshot-tests -d 'Only check if the test code is valid, without checking rule output. Turn it on when you want to ignore the output of rules. Conflicts with --update-all'
 complete -c sg -n "__fish_sg_using_subcommand test" -s U -l update-all -d 'Update the content of all snapshots that have changed in test. Conflicts with --skip-snapshot-tests'
 complete -c sg -n "__fish_sg_using_subcommand test" -s i -l interactive -d 'Start an interactive review to update snapshots selectively'
-complete -c sg -n "__fish_sg_using_subcommand test" -s h -l help -d 'Print help'
+complete -c sg -n "__fish_sg_using_subcommand test" -l include-off -d 'Include `severity:off` rules in test'
+complete -c sg -n "__fish_sg_using_subcommand test" -s h -l help -d 'Print help (see more with \'--help\')'
 complete -c sg -n "__fish_sg_using_subcommand new; and not __fish_seen_subcommand_from project rule test util help" -s l -l lang -d 'The language of the item to create' -r
 complete -c sg -n "__fish_sg_using_subcommand new; and not __fish_seen_subcommand_from project rule test util help" -s c -l config -d 'Path to ast-grep root config, default is sgconfig.yml' -r -F
 complete -c sg -n "__fish_sg_using_subcommand new; and not __fish_seen_subcommand_from project rule test util help" -s y -l yes -d 'Accept all default options without interactive input during creation'
