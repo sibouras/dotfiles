@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
 
-# https://github.com/dbrgn/tealdeer
+# https://github.com/tldr-pages/tlrc
 
-dra download -i -s tealdeer-linux-x86_64-musl -o ~/.local/bin/tldr dbrgn/tealdeer
+set -eu
 
-# Download bash completion
-dra download -s completions_bash -o ~/.local/share/bash-completion/completions/tldr dbrgn/tealdeer
-# Download zsh completion
-dra download -s completions_zsh -o ~/.local/share/zsh-completion/_tldr dbrgn/tealdeer
-# Download fish completion
-dra download -s completions_fish -o ~/.config/fish/completions/tldr.fish dbrgn/tealdeer
-
-# Update cache
-# tldr --update
+TMP_DIR=$(mktemp --directory)
+dra download -s "tlrc-v{tag}-x86_64-unknown-linux-gnu.tar.gz" -o "$TMP_DIR/tlrc.tar.gz" tldr-pages/tlrc
+tar -xf "$TMP_DIR/tlrc.tar.gz" --directory="$TMP_DIR"
+# binary
+cp "$TMP_DIR/tldr" ~/.local/bin/
+# completions
+cp "$TMP_DIR/completions/tldr.bash" ~/.local/share/bash-completion/completions/tldr
+cp "$TMP_DIR/completions/_tldr" ~/.local/share/zsh-completion/
+cp "$TMP_DIR/completions/tldr.fish" ~/.config/fish/completions/
+# man page
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp "$TMP_DIR/tldr.1" /usr/local/share/man/man1/
+rm -r "$TMP_DIR"
+# Run the mandb command. This will update man's internal database:
+# sudo mandb
