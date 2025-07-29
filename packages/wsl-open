@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# https://gitlab.com/4U6U57/wsl-open
+
+curl -o ~/.local/bin/wsl-open https://raw.githubusercontent.com/4U6U57/wsl-open/master/wsl-open.sh
+chmod +x ~/.local/bin/wsl-open

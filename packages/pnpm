@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# https://pnpm.io/installation
+
+if command -v pnpm > /dev/null; then
+  pnpm self-update
+else
+  curl -fsSL https://get.pnpm.io/install.sh | sh -
+fi
+
+pnpm completion bash > ~/.local/share/bash-completion/completions/pnpm
+pnpm completion zsh > ~/.local/share/zsh-completion/_pnpm
+pnpm completion fish > ~/.config/fish/completions/pnpm.fish

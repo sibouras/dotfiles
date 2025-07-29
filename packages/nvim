@@ -12,5 +12,6 @@ TMP_DIR=$(mktemp --directory)
 dra download -s "nvim-linux-x86_64.tar.gz" -o "$TMP_DIR/nvim.tar.gz" neovim/neovim
 tar -xzf "$TMP_DIR/nvim.tar.gz" --directory="$TMP_DIR"
 mkdir -p ~/src
+rm -r ~/src/nvim
 cp -r "$TMP_DIR/nvim-linux-x86_64" ~/src/nvim
 rm -r "$TMP_DIR"
