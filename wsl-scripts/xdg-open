@@ -1,0 +1,4 @@
+#! /bin/sh
+# xclip is disabled in wsl with `guiapplications = false`
+
+"/mnt/c/Users/ala/AppData/Local/Mozilla Firefox/firefox.exe" $1

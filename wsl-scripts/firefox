@@ -1,0 +1,3 @@
+#! /bin/sh
+
+"/mnt/c/Users/ala/AppData/Local/Mozilla Firefox/firefox.exe" $(wslpath -w "$1")
