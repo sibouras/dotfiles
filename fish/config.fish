@@ -36,8 +36,8 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 
 # bun
-# set --export BUN_INSTALL "$HOME/.bun"
-# set --export PATH $BUN_INSTALL/bin $PATH
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
 
 ### bindings
 bind \co __fish_preview_current_file # ctrl+o
