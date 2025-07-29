@@ -48,6 +48,7 @@ mv ~/.bashrc ~/.bashrc-bak
 mv ~/.profile ~/.profile-bak
 # the files inside bash belong to the home folder so we don't need --target
 stow bash/
+# NOTE: https://askubuntu.com/questions/64387/cannot-successfully-source-bashrc-from-a-shell-script
 source ~/.bashrc
 
 echo "stowing config files"
@@ -78,4 +79,5 @@ sudo apt install build-essential xclip zip unzip
 ./packages/tldr
 ./packages/watchexec
 ./packages/yazi
+./packages/resvg
 ./packages/zoxide

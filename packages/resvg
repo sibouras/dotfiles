@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/linebender/resvg
+
+dra download -i -s "resvg-linux-x86_64.tar.gz" -o ~/.local/bin/resvg linebender/resvg
