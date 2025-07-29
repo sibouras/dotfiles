@@ -3,11 +3,12 @@ gui:
   nerdFontsVersion: 3 # nerd fonts version to use ("2" or "3"); empty means don't show nerd font icons
   theme:
     selectedLineBgColor:
-      - "#292e42" # set to `default` to have no background colour
+      - '#292e42' # set to `default` to have no background colour
   statusPanelView: allBranchesLog
-
+  useHunkModeInStagingView: true
 git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
-  allBranchesLogCmd: 'git log --graph --color=always --graph --pretty=tformat:"%C(auto)%h%C(auto)%d%Creset %s %C(dim white)(%cd)%Creset" --date=relative'
+  allBranchesLogCmds:
+    - git log --graph --color=always --graph --pretty=tformat:"%C(auto)%h%C(auto)%d%Creset %s %C(dim white)(%cd)%Creset" --date=relative
