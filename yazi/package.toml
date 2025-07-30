@@ -1,27 +1,32 @@
 [[plugin.deps]]
-use = "yazi-rs/plugins:hide-preview"
-rev = "beb586a"
-hash = "55904f17e1053cfb91dacd9015a99f9d"
-
-[[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "ce6fb75"
-hash = "ed6c185514109d7c5463f609282b220c"
+rev = "0742fff"
+hash = "2bd799b42b8e42b8ef100310be71f8d1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "beb586a"
-hash = "b03f3d80d26b6d7bb490b1380e9cb754"
+rev = "de53d90"
+hash = "4c49c446328c4553a4ccab7facc10b21"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "beb586a"
-hash = "771f18427fb75fb19990ce602bb322f4"
+rev = "de53d90"
+hash = "63b6c222bf2103b3023389dde5e2ecfe"
 
 [[plugin.deps]]
 use = "boydaihungst/pref-by-location"
-rev = "7e54111"
-hash = "15aed1e9ad7bd3ba813b59e83abacc99"
+rev = "68f006d"
+hash = "67b7a8c5d39cba04d8e3c2f3581a3ab4"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "de53d90"
+hash = "d6f60c24d8c0cf57a855bf46115b2502"
+
+[[plugin.deps]]
+use = "Tyarel8/nu"
+rev = "acb88d8"
+hash = "ffc1c67d57ca0dcf48459f05368b330f"
 
 [flavor]
 deps = []
