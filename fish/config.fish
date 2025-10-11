@@ -4,6 +4,7 @@ if not status is-interactive
 end
 
 # fish_config prompt choose arrow
+set fish_pager_color_progress brblue --bold
 
 ### Adding to path
 fish_add_path ~/.local/bin
@@ -21,10 +22,13 @@ set -x XDG_STATE_HOME $HOME/.local/state
 
 set fish_greeting # Supresses fish's intro message
 set -x HELIX_RUNTIME ~/src/helix/runtime
-set -x EDITOR hx
+set -x EDITOR nvim
 
+set -x COLORTERM 'truecolor'
+# set -x TERM 'xterm-256color'
 set -x MOOR '--no-statusbar --style=github-dark'
 set -x PAGER 'moor --no-linenumbers -quit-if-one-screen'
+set -x BAT_THEME 'Visual Studio Dark+'
 # bat as manpager
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x MANROFFOPT -c
@@ -51,9 +55,9 @@ abbr -a gu gitui
 abbr -a lg lazygit
 
 # confirm before overwriting something
-abbr -a cp "cp -i"
-abbr -a mv "mv -i"
-abbr -a rm "rm -i"
+# abbr -a cp "cp -i"
+# abbr -a mv "mv -i"
+# abbr -a rm "rm -i"
 
 # Git abbreviations
 abbr -a ga 'git add'
