@@ -23,8 +23,8 @@ set fish_greeting # Supresses fish's intro message
 set -x HELIX_RUNTIME ~/src/helix/runtime
 set -x EDITOR hx
 
-set -x MOAR '--no-statusbar --style=github-dark'
-set -x PAGER 'moar --no-linenumbers -quit-if-one-screen'
+set -x MOOR '--no-statusbar --style=github-dark'
+set -x PAGER 'moor --no-linenumbers -quit-if-one-screen'
 # bat as manpager
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x MANROFFOPT -c

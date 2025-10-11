@@ -73,7 +73,7 @@ sudo apt install build-essential xclip zip unzip
 ./packages/gitui
 ./packages/hyperfine
 ./packages/lazygit
-./packages/moar
+./packages/moor
 ./packages/ouch
 ./packages/rg
 ./packages/tldr

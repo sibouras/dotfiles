@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/walles/moor/
+
+dra download -i -s "moor-v{tag}-linux-amd64" -o ~/.local/bin/moor walles/moor

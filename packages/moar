@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# https://github.com/walles/moar/
-
-dra download -i -s "moar-v{tag}-linux-amd64" -o ~/.local/bin/moar walles/moar
