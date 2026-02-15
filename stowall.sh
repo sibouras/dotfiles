@@ -32,3 +32,6 @@ stow yazi/ --target ~/.config/yazi/
 
 mkdir -p ~/.config/lazygit
 stow lazygit/ --target ~/.config/lazygit/
+
+mkdir -p ~/.config/cheat
+stow cheat/ --target ~/.config/cheat/
