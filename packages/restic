@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# https://github.com/restic/restic
+
+dra download -i -s "restic_{tag}_linux_amd64.bz2" -o ~/.local/bin/restic restic/restic
+
+restic generate --bash-completion ~/.local/share/bash-completion/completions/restic
+restic generate --zsh-completion ~/.local/share/zsh-completion/_restic
+restic generate --fish-completion ~/.config/fish/completions/restic.fish
+
+# install man page
+mkdir -p ~/.local/share/man/man1/
+restic generate --man ~/.local/share/man/man1/
+
+# update man's internal database:
+# sudo mandb
