@@ -28,7 +28,7 @@ set -x COLORTERM 'truecolor'
 # set -x TERM 'xterm-256color'
 set -x MOOR '--no-statusbar --style=github-dark'
 set -x PAGER 'moor --no-linenumbers -quit-if-one-screen'
-set -x BAT_THEME 'Visual Studio Dark+'
+set -x BAT_THEME 'base16'
 # bat as manpager
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x MANROFFOPT -c
