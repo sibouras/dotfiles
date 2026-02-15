@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# https://github.com/cheat/cheat
+
+dra download -i -s "cheat-linux-amd64.gz" -o ~/.local/bin/cheat cheat/cheat
+
+# Download bash completion
+curl -o ~/.local/share/bash-completion/completions/cheat https://github.com/cheat/cheat/blob/master/scripts/cheat.bash
+# Download zsh completion
+curl -o ~/.local/share/zsh-completion/_cheat https://raw.githubusercontent.com/cheat/cheat/refs/heads/master/scripts/cheat.zsh
+# Download fish completion
+curl -o ~/.config/fish/completions/cheat.fish https://raw.githubusercontent.com/cheat/cheat/refs/heads/master/scripts/cheat.fish
