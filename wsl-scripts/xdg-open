@@ -1,4 +1,9 @@
 #! /bin/sh
 # xclip is disabled in wsl with `guiapplications = false`
 
-"/mnt/c/Users/ala/AppData/Local/Mozilla Firefox/firefox.exe" $1
+# "/mnt/c/users/ala/AppData/Local/Microsoft/WinGet/Links/bt.exe" $(wslpath -w "$1")
+
+for var in "$@"; do
+  /mnt/c/Windows/explorer.exe file://///wsl.localhost/Ubuntu"$var"
+done
+exit 0
