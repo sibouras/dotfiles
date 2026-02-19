@@ -25,7 +25,9 @@ mkdir -p ~/.config/fish
 stow fish/ --target ~/.config/fish/
 
 mkdir -p ~/.local/wsl-scripts
-stow wsl-scripts/ --target ~/.local/wsl-scripts/
+stow --restow wsl-scripts/ --target ~/.local/wsl-scripts/
+# or symlink the whole directory
+ln -sf ~/.dotfiles/wsl-scripts/ ~/.local/
 
 mkdir -p ~/.config/yazi
 stow yazi/ --target ~/.config/yazi/
