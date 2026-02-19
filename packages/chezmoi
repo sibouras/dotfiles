@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# https://github.com/twpayne/chezmoi
+sudo dra download -i -s "chezmoi_{tag}_linux_amd64.deb" twpayne/chezmoi
