@@ -1,9 +1,19 @@
-#! /bin/sh
+#! /bin/bash
 # xclip is disabled in wsl with `guiapplications = false`
 
 # "/mnt/c/users/ala/AppData/Local/Microsoft/WinGet/Links/bt.exe" $(wslpath -w "$1")
 
-for var in "$@"; do
-  /mnt/c/Windows/explorer.exe file://///wsl.localhost/Ubuntu"$var"
+bt="/mnt/c/users/ala/AppData/Local/Microsoft/WinGet/Links/bt.exe"
+url_regex='^(https?|ftp|file)://'
+
+for arg in "$@"; do
+  if [[ $arg =~ $url_regex ]]
+  then 
+    $bt pick "$arg"
+  elif [[ $arg =~ .svg$ ]]; then
+    $bt pick $(wslpath -w "$arg")
+  else
+    /mnt/c/Windows/explorer.exe file://///wsl.localhost/Ubuntu"$arg"
+  fi
 done
 exit 0
