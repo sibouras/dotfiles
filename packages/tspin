@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# https://github.com/bensadeh/tailspin
+
+dra download -i -s "tailspin-x86_64-unknown-linux-musl.tar.gz" -o ~/.local/bin/tspin bensadeh/tailspin
+
+# Download bash completion
+curl -o ~/.local/share/bash-completion/completions/tspin https://raw.githubusercontent.com/bensadeh/tailspin/refs/heads/main/completions/tspin.bash
+# Download zsh completion
+curl -o ~/.local/share/zsh-completion/_tspin https://raw.githubusercontent.com/bensadeh/tailspin/refs/heads/main/completions/tspin.zsh
+# Download fish completion
+curl -o ~/.config/fish/completions/tspin.fish https://raw.githubusercontent.com/bensadeh/tailspin/refs/heads/main/completions/tspin.fish
