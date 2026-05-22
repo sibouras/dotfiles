@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# https://github.com/printfn/fend
+
+dra download -i -s "fend-{tag}-linux-x86_64-gnu.zip" -o ~/.local/bin/fend printfn/fend
+
+# man page
+mkdir -p ~/.local/share/man/man1/
+dra download -s "fend.1" -o ~/.local/share/man/man1/ printfn/fend
