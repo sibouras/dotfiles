@@ -1,0 +1,5 @@
+# Bind Up / Down arrows to search back and forth for matching history entries:
+# (Typing "br" and pressing up will cycle only through commands starting with "br")
+bind "\e[A" ed-search-prev-history # arrow up
+bind "\e[B" ed-search-next-history # arrow down
+bind "^S" em-inc-search-next # forward search

@@ -5,6 +5,9 @@ set -euo pipefail
 # make sure we're in the .dotfiles directory
 cd ~/.dotfiles
 
+ln -sf .dotfiles/.lldbinit "$HOME/.lldbinit"
+ln -sf .dotfiles/.editrc "$HOME/.editrc"
+
 # stow zsh
 # make sure directory exists before stowing
 mkdir -p ~/.config/zsh

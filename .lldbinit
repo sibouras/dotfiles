@@ -1,0 +1,3 @@
+command alias make platform shell make
+command alias rr process launch -o stdout
+settings set show-statusline false
