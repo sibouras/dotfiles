@@ -14,6 +14,9 @@ fish_add_path ~/src/fzf/bin
 fish_add_path ~/src/nvim/bin
 fish_add_path ~/.local/share/nvim/mason/bin
 
+set -x RESTIC_REPOSITORY ~/test/restic_repo
+set -x RESTIC_PASSWORD pass
+
 ### Environment variables
 set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_CONFIG_HOME $HOME/.config
@@ -24,11 +27,12 @@ set fish_greeting # Supresses fish's intro message
 set -x HELIX_RUNTIME ~/src/helix/runtime
 set -x EDITOR nvim
 
-set -x COLORTERM 'truecolor'
+set -x COLORTERM truecolor
 # set -x TERM 'xterm-256color'
 set -x MOOR '--no-statusbar --style=github-dark'
 set -x PAGER 'moor --no-linenumbers -quit-if-one-screen'
-set -x BAT_THEME 'base16'
+set -x BAT_THEME base16
+# set -x TAILSPIN_PAGER 'moor --follow [FILE]'
 # bat as manpager
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x MANROFFOPT -c
@@ -86,6 +90,14 @@ function yy
         cd -- "$cwd"
     end
     rm -f -- "$tmp"
+end
+
+# Opening a tab or pane in the same directory in Windows Terminal
+# https://learn.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory#fish
+function storePathForWindowsTerminal --on-variable PWD
+    if test -n "$WT_SESSION"
+        printf "\e]9;9;%s\e\\" (wslpath -w "$PWD")
+    end
 end
 
 # setup zoxide
