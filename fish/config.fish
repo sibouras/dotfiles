@@ -26,10 +26,12 @@ set -x XDG_STATE_HOME $HOME/.local/state
 set fish_greeting # Supresses fish's intro message
 set -x HELIX_RUNTIME ~/src/helix/runtime
 set -x EDITOR nvim
+set -x HELIX_RUNTIME ~/src/helix/runtime
+set -x FZF_DEFAULT_OPTS_FILE ~/.config/fzf/fzfrc
 
 set -x COLORTERM truecolor
 # set -x TERM 'xterm-256color'
-set -x MOOR '--no-statusbar --style=github-dark'
+set -x MOOR '--no-statusbar --style=github-dark --terminal-fg'
 set -x PAGER 'moor --no-linenumbers -quit-if-one-screen'
 set -x BAT_THEME base16
 # set -x TAILSPIN_PAGER 'moor --follow [FILE]'
@@ -50,6 +52,7 @@ set --export PATH $BUN_INSTALL/bin $PATH
 ### bindings
 bind \co __fish_preview_current_file # ctrl+o
 bind \e\[17\;8~ __fish_list_current_token # ctrl+i
+bind \ch backward-kill-word # ctrl+BS
 
 ### abbreviations
 abbr -a :q exit

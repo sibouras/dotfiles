@@ -40,3 +40,6 @@ stow lazygit/ --target ~/.config/lazygit/
 
 mkdir -p ~/.config/cheat
 stow cheat/ --target ~/.config/cheat/
+
+mkdir -p ~/.config/fzf
+stow fzf/ --target ~/.config/fzf/
