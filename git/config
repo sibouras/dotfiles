@@ -6,7 +6,8 @@
   defaultBranch = main
 
 [core]
-  pager = # empty pager for faster `git branch` or use `git --no-pager`
+  ; pager = # empty pager for faster `git branch` or use `git --no-pager`
+  pager = delta # empty pager for faster `git branch` or use `git --no-pager`
 
 [interactive]
   diffFilter = delta --color-only
@@ -35,7 +36,9 @@
   ll = log --stat -p
   b = branch -vv --sort=-committerdate
 
-[pager]
-  diff = delta --pager='moor --no-linenumbers -quit-if-one-screen'
-  show = delta --pager='moor -quit-if-one-screen'
-  log = delta --pager='moor -quit-if-one-screen'
+; this causes fugitive to run the pager
+; [pager]
+  ; diff = delta --pager='moor --no-linenumbers -quit-if-one-screen'
+  ; show = delta --pager='moor -quit-if-one-screen'
+  ; log = delta --pager='moor -quit-if-one-screen'
+  ; blame = delta --pager='moor -quit-if-one-screen'
