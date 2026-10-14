@@ -13,4 +13,4 @@ mkdir -p ~/.local/share/man/man1/
 restic generate --man ~/.local/share/man/man1/
 
 # update man's internal database:
-# sudo mandb
+# mandb

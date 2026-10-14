@@ -20,11 +20,11 @@ dra download -s "man-{tag}.tar.gz" -o "$TMP_DIR/eza-man.tar.gz" eza-community/ez
 tar -xf "$TMP_DIR/eza-man.tar.gz" --directory="$TMP_DIR"
 # move nested files to tmp_dir
 find "$TMP_DIR/target/" -type f -exec mv {} "$TMP_DIR" \;
-sudo mkdir -p /usr/local/share/man/man1
-sudo cp "$TMP_DIR/eza.1" /usr/local/share/man/man1/
-sudo mkdir -p /usr/local/share/man/man5
-sudo cp "$TMP_DIR/eza_colors.5" /usr/local/share/man/man5/
-sudo cp "$TMP_DIR/eza_colors-explanation.5" /usr/local/share/man/man5/
+mkdir -p ~/.local/share/man/man1
+cp "$TMP_DIR/eza.1" ~/.local/share/man/man1/
+mkdir -p ~/.local/share/man/man5
+cp "$TMP_DIR/eza_colors.5" ~/.local/share/man/man5/
+cp "$TMP_DIR/eza_colors-explanation.5" ~/.local/share/man/man5/
 rm -r "$TMP_DIR"
 # Run the mandb command. This will update man's internal database:
-# sudo mandb
+# mandb

@@ -19,8 +19,8 @@ mise use -g usage
 mise completion fish > ~/.config/fish/completions/mise.fish
 
 # install man page
-sudo mkdir -p /usr/local/share/man/man1
-sudo curl -o /usr/local/share/man/man1/mise.1 https://raw.githubusercontent.com/jdx/mise/refs/heads/main/man/man1/mise.1
+mkdir -p ~/.local/share/man/man1
+curl -o ~/.local/share/man/man1/mise.1 https://raw.githubusercontent.com/jdx/mise/refs/heads/main/man/man1/mise.1
 
 # in config.fish
 # mise activate method updates your environment variable and PATH every time
