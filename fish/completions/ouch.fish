@@ -49,7 +49,7 @@ complete -c ouch -n "__fish_ouch_using_subcommand compress" -s p -l password -d 
 complete -c ouch -n "__fish_ouch_using_subcommand compress" -s c -l threads -d 'Concurrent working threads' -r
 complete -c ouch -n "__fish_ouch_using_subcommand compress" -l fast -d 'Fastest compression level possible, conflicts with --level and --slow'
 complete -c ouch -n "__fish_ouch_using_subcommand compress" -l slow -d 'Slowest (and best) compression level possible, conflicts with --level and --fast'
-complete -c ouch -n "__fish_ouch_using_subcommand compress" -s S -l follow-symlinks -d 'Archive target files instead of storing symlinks (supported by `tar` and `zip`)'
+complete -c ouch -n "__fish_ouch_using_subcommand compress" -s S -l follow-symlinks -d 'Read from target files instead of from symlinks (relevant for `tar` and `zip`)'
 complete -c ouch -n "__fish_ouch_using_subcommand compress" -s y -l yes -d 'Skip [Y/n] questions, default to yes'
 complete -c ouch -n "__fish_ouch_using_subcommand compress" -s n -l no -d 'Skip [Y/n] questions, default to no'
 complete -c ouch -n "__fish_ouch_using_subcommand compress" -s A -l accessible -d 'Activate accessibility mode, reducing visual noise'
@@ -63,7 +63,7 @@ complete -c ouch -n "__fish_ouch_using_subcommand c" -s p -l password -d 'Decomp
 complete -c ouch -n "__fish_ouch_using_subcommand c" -s c -l threads -d 'Concurrent working threads' -r
 complete -c ouch -n "__fish_ouch_using_subcommand c" -l fast -d 'Fastest compression level possible, conflicts with --level and --slow'
 complete -c ouch -n "__fish_ouch_using_subcommand c" -l slow -d 'Slowest (and best) compression level possible, conflicts with --level and --fast'
-complete -c ouch -n "__fish_ouch_using_subcommand c" -s S -l follow-symlinks -d 'Archive target files instead of storing symlinks (supported by `tar` and `zip`)'
+complete -c ouch -n "__fish_ouch_using_subcommand c" -s S -l follow-symlinks -d 'Read from target files instead of from symlinks (relevant for `tar` and `zip`)'
 complete -c ouch -n "__fish_ouch_using_subcommand c" -s y -l yes -d 'Skip [Y/n] questions, default to yes'
 complete -c ouch -n "__fish_ouch_using_subcommand c" -s n -l no -d 'Skip [Y/n] questions, default to no'
 complete -c ouch -n "__fish_ouch_using_subcommand c" -s A -l accessible -d 'Activate accessibility mode, reducing visual noise'
@@ -71,10 +71,11 @@ complete -c ouch -n "__fish_ouch_using_subcommand c" -s H -l hidden -d 'Ignore h
 complete -c ouch -n "__fish_ouch_using_subcommand c" -s q -l quiet -d 'Silence output'
 complete -c ouch -n "__fish_ouch_using_subcommand c" -s g -l gitignore -d 'Ignore files matched by git\'s ignore files'
 complete -c ouch -n "__fish_ouch_using_subcommand c" -s h -l help -d 'Print help'
-complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s d -l dir -d 'Place results in a directory other than the current one' -r -F
+complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s d -l dir -d 'Decompress inside OUTPUT_DIR instead of the basename-derived subdirectory' -r -F
 complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s f -l format -d 'Specify the format of the archive' -r
 complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s p -l password -d 'Decompress or list with password' -r
 complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s c -l threads -d 'Concurrent working threads' -r
+complete -c ouch -n "__fish_ouch_using_subcommand decompress" -l here -d 'Extract directly into the current directory, like `tar -xf` and `unzip` do'
 complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s r -l remove -d 'Remove the source file after successful decompression'
 complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s y -l yes -d 'Skip [Y/n] questions, default to yes'
 complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s n -l no -d 'Skip [Y/n] questions, default to no'
@@ -83,10 +84,11 @@ complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s H -l hidden -d 
 complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s q -l quiet -d 'Silence output'
 complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s g -l gitignore -d 'Ignore files matched by git\'s ignore files'
 complete -c ouch -n "__fish_ouch_using_subcommand decompress" -s h -l help -d 'Print help'
-complete -c ouch -n "__fish_ouch_using_subcommand d" -s d -l dir -d 'Place results in a directory other than the current one' -r -F
+complete -c ouch -n "__fish_ouch_using_subcommand d" -s d -l dir -d 'Decompress inside OUTPUT_DIR instead of the basename-derived subdirectory' -r -F
 complete -c ouch -n "__fish_ouch_using_subcommand d" -s f -l format -d 'Specify the format of the archive' -r
 complete -c ouch -n "__fish_ouch_using_subcommand d" -s p -l password -d 'Decompress or list with password' -r
 complete -c ouch -n "__fish_ouch_using_subcommand d" -s c -l threads -d 'Concurrent working threads' -r
+complete -c ouch -n "__fish_ouch_using_subcommand d" -l here -d 'Extract directly into the current directory, like `tar -xf` and `unzip` do'
 complete -c ouch -n "__fish_ouch_using_subcommand d" -s r -l remove -d 'Remove the source file after successful decompression'
 complete -c ouch -n "__fish_ouch_using_subcommand d" -s y -l yes -d 'Skip [Y/n] questions, default to yes'
 complete -c ouch -n "__fish_ouch_using_subcommand d" -s n -l no -d 'Skip [Y/n] questions, default to no'
