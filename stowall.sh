@@ -43,3 +43,6 @@ stow cheat/ --target ~/.config/cheat/
 
 mkdir -p ~/.config/fzf
 stow fzf/ --target ~/.config/fzf/
+
+mkdir -p ~/.config/kanata
+stow kanata/ --target ~/.config/kanata/

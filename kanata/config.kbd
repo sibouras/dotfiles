@@ -1,0 +1,95 @@
+#|
+guide: https://jtroo.github.io/config.html
+source of all key names: https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs
+|#
+
+(defcfg
+  process-unmapped-keys yes
+  danger-enable-cmd yes
+  concurrent-tap-hold yes
+)
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+;; Variables
+(defvar
+ tap-time 100
+ hold-time 100
+)
+
+(defalias
+  cap (layer-while-held caps-layer)
+  shit (multi lsft (layer-while-held shift-layer))
+  td (tap-dance 150 (1 grv))
+  atl (multi alt (layer-while-held alt-layer))
+  mctl (multi lctl (layer-while-held lctl-layer))
+)
+
+;; mmtp: tap middle mouse button
+
+(deflayer base
+  esc    f1    f2    f3    f4   f5   f6   f7   f8
+  grv    1     2     3     4    5    6    7    8     bspc   0    -    =    bspc
+  tab    esc   w     e     r    t    y    u    i     o      p    [    ]    \
+  @cap   a     s     d     f    g    h    j    k     l      ;    '    ret
+  @shit  z     x     c     v    b    n    m    ,     .      /    @shit
+  @mctl  lmet  @atl             spc             ralt  rmet   rctl
+)
+
+(defalias
+  mwu (mwheel-up  100 120)
+  mwd (mwheel-down 100 120)
+  pp (cmd playerctl play-pause)
+  cm (cmd bash -c "echo hello world")
+)
+
+(deflayer caps-layer
+  esc   f1    f2    f3    f4    pp    f6    prev  next
+  grv   pp    vold  volu  mute  lrld  6     7     8       C-bspc  9     -     =    bspc
+  tab   q     C-w   @mwd  @mwu  C-t   y     pgup  home    end     pgdn  C-[   C-]  ins
+  XX    lmet  lalt  lsft  lctl  menu  left  down  up      right   caps  del   ret
+  lsft  z     x     mmtp  mlft  b     @pp   @cm   C-pgup  C-pgdn  /     rsft
+  lctl  lmet  lalt              spc               ralt    rmet    rctl 
+)
+
+;; (deflayer shift-layer
+;;   _  _  _
+;;   _  _  _  _  _  _  _  _  _  lpar  _  _  _  _
+;;   _  _  _  _  _  _  _  _  _  _     _  _  _  _
+;;   _  _  _  _  _  _  _  _  _  _     _  _  _
+;;   _  _  _  _  _  _  _  _  _  _     _  _
+;;   _  _  _        _        _  _     _
+;; )
+
+(deflayermap shift-layer
+  9 9
+)
+
+(deflayermap alt-layer
+  i tab
+  q f4
+  9 A-9
+)
+
+(deflayermap lctl-layer
+  q q
+)
+
+;; Variables
+(defvar
+ chord-time 50
+)
+
+(defchordsv2
+  ;; (participating-keys1) action1 timeout1 release-behaviour1 (disabled-layers1)
+  (grv 1) mmtp $chord-time first-release ()
+  ;; (1 2) vold $chord-time first-release ()
+  ;; (2 3) volu $chord-time first-release ()
+)
