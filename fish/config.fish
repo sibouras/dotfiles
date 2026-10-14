@@ -5,6 +5,8 @@ end
 
 # fish_config prompt choose arrow
 set fish_pager_color_progress brblue --bold
+# Supresses fish's intro message
+set fish_greeting
 
 ### Adding to path
 fish_add_path ~/.local/bin
@@ -23,8 +25,6 @@ set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_DATA_HOME $HOME/.local/share
 set -x XDG_STATE_HOME $HOME/.local/state
 
-set fish_greeting # Supresses fish's intro message
-set -x HELIX_RUNTIME ~/src/helix/runtime
 set -x EDITOR nvim
 set -x HELIX_RUNTIME ~/src/helix/runtime
 set -x FZF_DEFAULT_OPTS_FILE ~/.config/fzf/fzfrc
@@ -39,15 +39,13 @@ set -x BAT_THEME base16
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x MANROFFOPT -c
 
+# bun
+set -x BUN_INSTALL "$HOME/.bun"
+fish_add_path $BUN_INSTALL/bin
+
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+fish_add_path $PNPM_HOME/bin
 
 ### bindings
 bind \co __fish_preview_current_file # ctrl+o
@@ -78,9 +76,9 @@ abbr -a gr 'cd (git rev-parse --show-toplevel)'
 ### aliases
 alias g 'git --no-pager'
 alias ls eza
-alias l 'eza -la -s Name --binary --git --group-directories-first --icons'
-alias ll 'eza -l --group-directories-first --icons'
-alias lt 'eza --tree --group-directories-first --icons'
+alias l 'eza -la --icons -s Name --binary --git --group-directories-first'
+alias ll 'eza -l --icons --group-directories-first'
+alias lt 'eza --tree --icons --group-directories-first'
 alias reload 'source ~/.config/fish/config.fish'
 alias start '/mnt/c/Windows/explorer.exe'
 alias mypath 'echo "$PATH" | sed "s/:/\n/g"'
