@@ -47,10 +47,9 @@ fish_add_path $BUN_INSTALL/bin
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 fish_add_path $PNPM_HOME/bin
 
-### bindings
-bind \co __fish_preview_current_file # ctrl+o
-bind \e\[17\;8~ __fish_list_current_token # ctrl+i
-bind \ch backward-kill-word # ctrl+BS
+### bindings, get key with fish_key_reader
+bind ctrl-o __fish_preview_current_file
+bind ctrl-i __fish_list_current_token
 
 ### abbreviations
 abbr -a :q exit
