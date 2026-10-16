@@ -3,3 +3,5 @@ yazi/plugins/*
 !yazi/plugins/zoom-preview.yazi
 !yazi/plugins/open-with-cmd.yazi
 !yazi/plugins/change-ratio.yazi
+/fish/fish_variables
+/fish/completions
