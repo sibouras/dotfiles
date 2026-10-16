@@ -75,7 +75,6 @@ source of all key names: https://github.com/jtroo/kanata/blob/main/parser/src/ke
 (deflayermap alt-layer
   i tab
   q f4
-  9 A-9
 )
 
 (deflayermap lctl-layer
