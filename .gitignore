@@ -5,3 +5,5 @@ yazi/plugins/*
 !yazi/plugins/change-ratio.yazi
 /fish/fish_variables
 /fish/completions
+/zsh/.zcompdump
+/cheat/cheatsheets

@@ -11,15 +11,32 @@ mkdir -p "$HOME/src"
 mkdir -p "$HOME/.local/share/bash-completion/completions"
 mkdir -p "$HOME/.local/share/zsh-completion"
 mkdir -p "$HOME/.local/state/bash" # for bash history file
-mkdir -p "$HOME/.local/state/zsh" # for zsh history file
+mkdir -p "$HOME/.local/state/zsh"  # for zsh history file
 
 DRA_BIN="$HOME/.local/bin/dra"
 
+# clone dotfiles repo
+[ ! -d ~/.dotfiles ] && git clone https://github.com/sibouras/dotfiles.git ~/.dotfiles
+# make sure we're in the .dotfiles directory
+cd ~/.dotfiles
+
+# symlink configs
+./dotlink.sh
+
+# source .bashrc to set XDG environment variables
+# NOTE: https://askubuntu.com/questions/64387/cannot-successfully-source-bashrc-from-a-shell-script
+source ~/.bashrc
+
+# if running inside wsl
+if command -v wslinfo &> /dev/null; then
+  ln -sf /mnt/c/Windows/System32/clip.exe ~/.local/bin
+fi
+
 # https://github.com/devmatteini/dra
-function install_dra(){
+function install_dra() {
   curl --proto '=https' \
     --tlsv1.2 \
-    -sSf https://raw.githubusercontent.com/devmatteini/dra/refs/heads/main/install.sh | \
+    -sSf https://raw.githubusercontent.com/devmatteini/dra/refs/heads/main/install.sh |
     bash -s -- --to "$DRA_BIN"
 
   # Post installation setup
@@ -34,50 +51,31 @@ echo "installing dra...."
 install_dra
 echo "installed dra"
 
-# install stow
-sudo apt install stow
+# apt packages
+if command -v apt &> /dev/null; then
+  # install essentials
+  sudo apt install build-essential xclip zip unzip
 
-# clone dotfiles repo
-git clone https://github.com/sibouras/dotfiles.git ~/.dotfiles
-# make sure we're in the .dotfiles directory
-cd ~/.dotfiles
-
-# first stow bash and source .bashrc to set XDG environment variables
-# backup or remove .bashrc and .profile before stowing
-mv ~/.bashrc ~/.bashrc-bak
-mv ~/.profile ~/.profile-bak
-# the files inside bash belong to the home folder so we don't need --target
-stow bash/
-# NOTE: https://askubuntu.com/questions/64387/cannot-successfully-source-bashrc-from-a-shell-script
-source ~/.bashrc
-
-echo "stowing config files"
-./stowall.sh
-echo "stowing completed"
-
-# install essentials
-sudo apt install build-essential xclip zip unzip
-
-# install binaries
-./packages/ast-grep
-./packages/bat
-./packages/btop
-./packages/delta
-./packages/dust
-./packages/eza
-./packages/fastfetch
-./packages/fd
-./packages/fnm
-./packages/fzf
-./packages/git-filter-repo
-./packages/gitui
-./packages/hyperfine
-./packages/lazygit
-./packages/moor
-./packages/ouch
-./packages/rg
-./packages/tldr
-./packages/watchexec
-./packages/yazi
-./packages/resvg
-./packages/zoxide
+  # install binaries
+  ./packages/bat
+  ./packages/btop
+  ./packages/delta
+  ./packages/dust
+  ./packages/eza
+  ./packages/fastfetch
+  ./packages/fd
+  ./packages/fnm
+  ./packages/fzf
+  ./packages/git-filter-repo
+  ./packages/gitui
+  ./packages/hyperfine
+  ./packages/lazygit
+  ./packages/moor
+  ./packages/ouch
+  ./packages/rg
+  ./packages/tldr
+  ./packages/watchexec
+  ./packages/yazi
+  ./packages/resvg
+  ./packages/zoxide
+fi
