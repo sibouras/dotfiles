@@ -7,3 +7,4 @@ yazi/plugins/*
 /fish/completions
 /zsh/.zcompdump
 /cheat/cheatsheets
+/nushell/history.txt

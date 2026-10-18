@@ -9,6 +9,7 @@ gitui|.config/gitui
 helix|.config/helix
 kanata|.config/kanata
 lazygit|.config/lazygit
+nushell|.config/nushell
 yazi|.config/yazi
 zsh|.config/zsh
 .editrc|.editrc
