@@ -2,3 +2,5 @@
 
 "\e[A": history-search-backward # arrow up
 "\e[B": history-search-forward  # arrow down
+# Ctrl-Backspace: delete previous word, bind -P | grep 'C-w'
+"\C-H": unix-word-rubout

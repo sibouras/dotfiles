@@ -42,6 +42,7 @@ function install_dra() {
   # Post installation setup
   "$DRA_BIN" completion bash > ~/.local/share/bash-completion/completions/dra
   "$DRA_BIN" completion zsh > ~/.local/share/zsh-completion/_dra
+  mkdir -p "$HOME/.config/fish/completions"
   "$DRA_BIN" completion fish > ~/.config/fish/completions/dra.fish
   # Create symlink to be able to use dra as superuser (for example when installing .deb assets)
   sudo ln -sf "$DRA_BIN" /usr/local/bin/dra
@@ -66,16 +67,16 @@ if command -v apt &> /dev/null; then
   ./packages/fd
   ./packages/fnm
   ./packages/fzf
-  ./packages/git-filter-repo
   ./packages/gitui
   ./packages/hyperfine
   ./packages/lazygit
   ./packages/moor
   ./packages/ouch
+  ./packages/resvg
   ./packages/rg
   ./packages/tldr
+  ./packages/vivid
   ./packages/watchexec
   ./packages/yazi
-  ./packages/resvg
   ./packages/zoxide
 fi

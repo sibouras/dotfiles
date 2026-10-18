@@ -5,8 +5,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export HISTFILE="$XDG_STATE_HOME/bash/history"
 
-export HELIX_RUNTIME=~/src/helix/runtime
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -16,6 +14,10 @@ case $- in
     *i*) ;;
       *) return;;
 esac
+
+export EDITOR=nvim
+export HELIX_RUNTIME=~/src/helix/runtime
+export FZF_DEFAULT_OPTS_FILE=~/.config/fzf/fzfrc
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -81,18 +83,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -128,12 +118,19 @@ bind 'set completion-ignore-case on'
 stty stop '^p'
 
 # aliases
+alias ls='ls --color=auto'
+alias l='ls --color=auto -la'
+alias grep='grep --color=auto'
+alias v='nvim'
+alias y='yazi'
+alias lg='lazygit'
+
 # eza aliases
 if [ -x ~/.local/bin/eza ]; then
     alias ls='eza'
-    alias l='eza -la -s Name --binary --git --group-directories-first --icons'
-    alias ll='eza -l --group-directories-first --icons'
-    alias lt='eza --tree --group-directories-first --icons'
+    alias l='eza -la --icons -s Name --binary --git --group-directories-first'
+    alias ll='eza -l --icons --group-directories-first'
+    alias lt='eza --tree --icons --group-directories-first'
 fi
 
 # use single quotes ' to prevent bash from expanding the variable when creating the alias

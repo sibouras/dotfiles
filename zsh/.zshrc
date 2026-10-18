@@ -74,6 +74,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # Mapping CTRl + [left|right] arrow to move between words
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey '^H' backward-kill-word
 
 # --------------------
 # Aliases, functions and private configs

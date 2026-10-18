@@ -11,7 +11,9 @@ set -euo pipefail
 TMP_DIR=$(mktemp --directory)
 dra download -s "nvim-linux-x86_64.tar.gz" -o "$TMP_DIR/nvim.tar.gz" neovim/neovim
 tar -xzf "$TMP_DIR/nvim.tar.gz" --directory="$TMP_DIR"
-mkdir -p ~/src
+mkdir -p ~/src/nvim
 rm -r ~/src/nvim
 cp -r "$TMP_DIR/nvim-linux-x86_64" ~/src/nvim
 rm -r "$TMP_DIR"
+# Create symlink to be able to use nvim as superuser (sudo -E nvim), or use sudoedit
+# sudo ln -sf ~/src/nvim/bin/nvim /usr/local/bin/nvim

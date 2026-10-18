@@ -8,16 +8,9 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-        . "$HOME/.bashrc"
-    fi
-fi
-
 # How to correctly add a path to PATH?
 # https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path
+# https://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -35,3 +28,12 @@ fi
 
 # Add cargo to path
 [ -d "$HOME"/.cargo/bin ] && PATH="$HOME/.cargo/bin:$PATH"
+
+# if running bash
+# keep this under paths for command -v to work in .bashrc
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi
