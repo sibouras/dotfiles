@@ -16,31 +16,29 @@ fish_add_path ~/src/fzf/bin
 fish_add_path ~/src/nvim/bin
 fish_add_path ~/.local/share/nvim/mason/bin
 
-set -x RESTIC_REPOSITORY ~/test/restic_repo
-set -x RESTIC_PASSWORD pass
-
 ### Environment variables
-set -x XDG_CACHE_HOME $HOME/.cache
-set -x XDG_CONFIG_HOME $HOME/.config
-set -x XDG_DATA_HOME $HOME/.local/share
-set -x XDG_STATE_HOME $HOME/.local/state
+set -gx XDG_CACHE_HOME $HOME/.cache
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_STATE_HOME $HOME/.local/state
 
-set -x EDITOR nvim
-set -x HELIX_RUNTIME ~/src/helix/runtime
-set -x FZF_DEFAULT_OPTS_FILE ~/.config/fzf/fzfrc
-
-set -x COLORTERM truecolor
-# set -x TERM 'xterm-256color'
-set -x MOOR '--no-statusbar --style=github-dark --terminal-fg'
-set -x PAGER 'moor --no-linenumbers -quit-if-one-screen'
-set -x BAT_THEME base16
-# set -x TAILSPIN_PAGER 'moor --follow [FILE]'
-# bat as manpager
-set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
-set -x MANROFFOPT -c
+set -gx EDITOR nvim
+set -gx HELIX_RUNTIME ~/src/helix/runtime
+set -gx FZF_DEFAULT_OPTS_FILE ~/.config/fzf/fzfrc
+set -gx RESTIC_REPOSITORY ~/test/restic_repo
+set -gx RESTIC_PASSWORD pass
+set -gx COLORTERM truecolor
+# set -gx TERM 'xterm-256color'
+set -gx MOOR '--no-statusbar --style=github-dark --terminal-fg'
+set -gx PAGER 'moor --no-linenumbers -quit-if-one-screen'
+set -gx BAT_THEME base16
+# set -gx TAILSPIN_PAGER 'moor --follow [FILE]'
+set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'" # bat as manpager
+set -gx MANROFFOPT -c
+set -gx LS_COLORS (vivid generate my_tokyonight-night)
 
 # bun
-set -x BUN_INSTALL "$HOME/.bun"
+set -gx BUN_INSTALL "$HOME/.bun"
 fish_add_path $BUN_INSTALL/bin
 
 # pnpm
