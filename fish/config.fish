@@ -35,7 +35,8 @@ set -gx BAT_THEME base16
 # set -gx TAILSPIN_PAGER 'moor --follow [FILE]'
 set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'" # bat as manpager
 set -gx MANROFFOPT -c
-set -gx LS_COLORS (vivid generate my_tokyonight-night)
+# set -gx LS_COLORS (vivid generate my_tokyonight-night)
+source ~/.config/fish/ls_colors.fish
 
 # bun
 set -gx BUN_INSTALL "$HOME/.bun"
