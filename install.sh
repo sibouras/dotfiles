@@ -15,17 +15,12 @@ mkdir -p "$HOME/.local/state/zsh"  # for zsh history file
 
 DRA_BIN="$HOME/.local/bin/dra"
 
-# clone dotfiles repo
-[ ! -d ~/.dotfiles ] && git clone https://github.com/sibouras/dotfiles.git ~/.dotfiles
-# make sure we're in the .dotfiles directory
-cd ~/.dotfiles
+# Change to the directory of this script
+cd "$(dirname "$0")"
 
 # symlink configs
 ./dotlink.sh
-
-# source .bashrc to set XDG environment variables
-# NOTE: https://askubuntu.com/questions/64387/cannot-successfully-source-bashrc-from-a-shell-script
-source ~/.bashrc
+mkdir -p "$HOME/.config/fish/completions"
 
 # if running inside wsl
 if command -v wslinfo &> /dev/null; then
@@ -42,7 +37,6 @@ function install_dra() {
   # Post installation setup
   "$DRA_BIN" completion bash > ~/.local/share/bash-completion/completions/dra
   "$DRA_BIN" completion zsh > ~/.local/share/zsh-completion/_dra
-  mkdir -p "$HOME/.config/fish/completions"
   "$DRA_BIN" completion fish > ~/.config/fish/completions/dra.fish
   # Create symlink to be able to use dra as superuser (for example when installing .deb assets)
   sudo ln -sf "$DRA_BIN" /usr/local/bin/dra
@@ -51,6 +45,17 @@ function install_dra() {
 echo "installing dra...."
 install_dra
 echo "installed dra"
+
+# some install scripts like fnm install stuff in XDG_DATA_HOME if it's set
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# append ~/.local/bin to path so scripts that generate completions work
+if [ -d "$HOME/.local/bin" ]; then
+  PATH="$HOME/.local/bin:$PATH"
+fi
 
 # apt packages
 if command -v apt &> /dev/null; then
