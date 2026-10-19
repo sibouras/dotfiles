@@ -1,13 +1,13 @@
 # https://wiki.archlinux.org/title/Zsh
 typeset -U path PATH
 path=(
-    ~/.local/bin
-    ~/.local/wsl-scripts
-    ~/.cargo/bin
-    ~/src/fzf/bin
-    ~/src/nvim/bin
-    ~/.local/share/nvim/mason/bin
-    $path
+  ~/.local/bin
+  ~/.local/wsl-scripts
+  ~/.cargo/bin
+  ~/src/fzf/bin
+  ~/src/nvim/bin
+  ~/.local/share/nvim/mason/bin
+  $path
 )
 export PATH
 
@@ -19,9 +19,9 @@ export FPATH
 # Set up the prompt
 
 # Enable colors and change prompt:
-autoload -U colors && colors	# Load colors
+autoload -U colors && colors # Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%} %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-setopt autocd		# Automatically cd into typed directory.
+setopt autocd # Automatically cd into typed directory.
 
 setopt histignorealldups sharehistory
 
@@ -33,7 +33,8 @@ bindkey -e
 stty stop '^p'
 
 # edit line in editor with ctrl-o:
-autoload edit-command-line; zle -N edit-command-line
+autoload edit-command-line
+zle -N edit-command-line
 bindkey '^o' edit-command-line
 
 # Keep 10000 lines of history within the shell and save it to ~/.zsh_history:
@@ -82,10 +83,10 @@ bindkey '^H' backward-kill-word
 
 # eza aliases
 if [ -x ~/.local/bin/eza ]; then
-    alias ls='eza'
-    alias l='eza -la -s Name --binary --git --group-directories-first --icons'
-    alias ll='eza -l --group-directories-first --icons'
-    alias lt='eza --tree --group-directories-first --icons'
+  alias ls='eza'
+  alias l='eza -la -s Name --binary --git --group-directories-first --icons'
+  alias ll='eza -l --group-directories-first --icons'
+  alias lt='eza --tree --group-directories-first --icons'
 fi
 
 # use single quotes ' to prevent bash from expanding the variable when creating the alias
@@ -99,11 +100,11 @@ alias reload="source ~/.config/zsh/.zshrc"
 
 # Set up fzf key bindings and fuzzy completion
 if command -v fzf > /dev/null; then
-    source <(fzf --zsh)
+  source <(fzf --zsh)
 fi
 
 # setup zoxide
 # [ -x ~/.local/bin/zoxide ] && eval "$(zoxide init zsh)"
 if command -v zoxide > /dev/null; then
-    eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh)"
 fi
