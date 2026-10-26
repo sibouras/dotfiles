@@ -8,10 +8,13 @@ git|.config/git
 gitui|.config/gitui
 helix|.config/helix
 kanata|.config/kanata
+kitty|.config/kitty
 lazygit|.config/lazygit
+niri|.config/niri
 nushell|.config/nushell
 vivid|.config/vivid
 yazi|.config/yazi
+yt-dlp|.config/yt-dlp
 zsh|.config/zsh
 .editrc|.editrc
 .lldbinit|.lldbinit
