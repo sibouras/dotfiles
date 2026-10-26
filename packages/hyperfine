@@ -2,4 +2,24 @@
 
 # https://github.com/sharkdp/hyperfine
 
-sudo dra download -i -s "hyperfine_{tag}_amd64.deb" sharkdp/hyperfine
+set -eu
+
+if command -v apt &> /dev/null; then
+  sudo dra download -i -s "hyperfine_{tag}_amd64.deb" sharkdp/hyperfine
+  exit 0
+fi
+
+TMP_DIR=$(mktemp --directory)
+dra download -s "hyperfine-v{tag}-x86_64-unknown-linux-gnu.tar.gz" -o "$TMP_DIR/hyperfine.tar.gz" sharkdp/hyperfine
+# extract a tarball while removing the top-level directory from the extracted file paths.
+tar --strip-components=1 -xf "$TMP_DIR/hyperfine.tar.gz" --directory="$TMP_DIR"
+# binary
+cp "$TMP_DIR/hyperfine" ~/.local/bin/
+# completions
+cp "$TMP_DIR/autocomplete/hyperfine.bash" ~/.local/share/bash-completion/completions/hyperfine
+cp "$TMP_DIR/autocomplete/_hyperfine" ~/.local/share/zsh-completion/
+cp "$TMP_DIR/autocomplete/hyperfine.fish" ~/.config/fish/completions/
+# man page
+mkdir -p ~/.local/share/man/man1
+cp "$TMP_DIR/hyperfine.1" ~/.local/share/man/man1/
+rm -r "$TMP_DIR"

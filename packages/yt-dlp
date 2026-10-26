@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# https://github.com/yt-dlp/yt-dlp
+
+set -eu
+
+if command -v yt-dlp &> /dev/null; then
+  yt-dlp --update
+else
+  curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux -o ~/.local/bin/yt-dlp
+  chmod a+rx ~/.local/bin/yt-dlp
+fi
+
+# extract a tarball while removing the top-level directory from the extracted file paths.
+TMP_DIR=$(mktemp --directory)
+cd $TMP_DIR
+curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.tar.gz -o "$TMP_DIR/yt-dlp.tar.gz"
+tar --strip-components=1 -xf "yt-dlp.tar.gz" "yt-dlp/yt-dlp" "yt-dlp/yt-dlp.1" "yt-dlp/completions/"
+# completions
+cp "completions/bash/yt-dlp" ~/.local/share/bash-completion/completions/yt-dlp
+cp "completions/zsh/_yt-dlp" ~/.local/share/zsh-completion/
+cp "completions/fish/yt-dlp.fish" ~/.config/fish/completions/
+# man page
+mkdir -p ~/.local/share/man/man1
+cp "yt-dlp.1" ~/.local/share/man/man1/
+rm -r "$TMP_DIR"

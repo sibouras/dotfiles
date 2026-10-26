@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/ViRb3/wgcf
+
+dra download -i -s "wgcf_{tag}_linux_amd64" -o ~/.local/bin/wgcf ViRb3/wgcf

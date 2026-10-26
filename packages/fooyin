@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/fooyin/fooyin
+
+sudo dra download -i -s "fooyin-{tag}.fc44.x86_64.rpm" fooyin/fooyin
