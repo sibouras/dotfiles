@@ -4,6 +4,15 @@
 
 dra download -i -s "cheat-linux-amd64.gz" -o ~/.local/bin/cheat cheat/cheat
 
+# Community cheatsheets (https://github.com/cheat/cheatsheets):
+if [[ ! -d "$HOME/.config/cheat/cheatsheets/community" ]]; then
+  git clone --depth=1 https://github.com/cheat/cheatsheets ~/.config/cheat/cheatsheets/community
+fi
+
+if [[ ! -d "$HOME/.config/cheat/cheatsheets/personal" ]]; then
+  mkdir -p ~/.config/cheat/cheatsheets/personal
+fi
+
 cheat --completion bash > ~/.local/share/bash-completion/completions/cheat
 cheat --completion zsh > ~/.local/share/zsh-completion/_cheat
 cheat --completion fish > ~/.config/fish/completions/cheat.fish
