@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/jtroo/kanata
+
+sudo dra download -s "linux-binaries-x64.zip" -I kanata_linux_cmd_allowed_x64 -o /usr/local/bin/kanata jtroo/kanata
