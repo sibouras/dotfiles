@@ -1,0 +1,8 @@
+# winget info
+winget --info
+
+# Show detailed information about packages
+winget list --details package_name
+
+# Machine scope installation (for all users)
+winget install Nushell.Nushell --override 'ALLUSERS=1'
