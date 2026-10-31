@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# https://github.com/GyulyVGC/sniffnet
+
+curl -L https://github.com/GyulyVGC/sniffnet/releases/latest/download/Sniffnet_LinuxRPM_x86_64.rpm -o /tmp/sniffnet.rpm
+sudo dnf install /tmp/sniffnet.rpm
+rm /tmp/sniffnet.rpm
