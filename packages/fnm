@@ -5,4 +5,6 @@
 # to prevent duplication in your shell config file, pass --skip-shell to the install command:
 curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 
-fnm completions --shell fish > ~/.config/fish/completions/fnm.fish
+if command -v fnm &> /dev/null; then
+  fnm completions --shell fish > ~/.config/fish/completions/fnm.fish
+fi

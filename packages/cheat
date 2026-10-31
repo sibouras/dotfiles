@@ -6,6 +6,7 @@ dra download -i -s "cheat-linux-amd64.gz" -o ~/.local/bin/cheat cheat/cheat
 
 # Community cheatsheets (https://github.com/cheat/cheatsheets):
 if [[ ! -d "$HOME/.config/cheat/cheatsheets/community" ]]; then
+  mkdir -p ~/.config/cheat/cheatsheets
   git clone --depth=1 https://github.com/cheat/cheatsheets ~/.config/cheat/cheatsheets/community
 fi
 

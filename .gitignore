@@ -6,6 +6,6 @@ yazi/plugins/*
 /fish/fish_variables
 /fish/completions
 /zsh/.zcompdump
-/cheat/cheatsheets
+/cheat/cheatsheets/community
 /nushell/history.txt
 /yazi/pref-by-location

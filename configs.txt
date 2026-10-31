@@ -1,6 +1,6 @@
-bash/.profile|.profile
-bash/.bashrc|.bashrc
-bash/.inputrc|.inputrc
+# bash/.profile|.profile
+# bash/.bashrc|.bashrc
+# bash/.inputrc|.inputrc
 cheat|.config/cheat
 fish|.config/fish
 fzf|.config/fzf
@@ -10,12 +10,14 @@ helix|.config/helix
 kanata|.config/kanata
 kitty|.config/kitty
 lazygit|.config/lazygit
+mpv|.config/mpv
 niri|.config/niri
 nushell|.config/nushell
 vivid|.config/vivid
 yazi|.config/yazi
+waybar|.config/waybar
 yt-dlp|.config/yt-dlp
-zsh|.config/zsh
+# zsh|.config/zsh
 .editrc|.editrc
 .lldbinit|.lldbinit
-.zshenv|.zshenv
+# .zshenv|.zshenv
