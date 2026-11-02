@@ -1,0 +1,30 @@
+# https://github.com/gerardbm/dotfiles/blob/master/zathura/.config/zathura/zathurarc
+# set default-bg "#0e1417"
+
+set font "Adwaita Sans 16"
+
+set default-bg "#0e1417"
+set statusbar-bg "#141b1e"
+set inputbar-bg "#0e1417"
+set inputbar-fg "#a9b5bb"
+set highlight-fg '#ffffff'
+
+set recolor "true"
+set recolor-lightcolor "#0e1417"
+set recolor-darkcolor "#e2e6e8"
+# set recolor-reverse-video "true"
+# set recolor-keephue "false"
+
+map [normal]     u scroll half-up
+map [fullscreen] u scroll half-up
+map [normal]     d scroll half-down
+map [fullscreen] d scroll half-down
+
+map [normal]     D toggle_page_mode
+map [fullscreen] D toggle_page_mode
+
+map [normal]     i recolor
+map [fullscreen] i recolor
+
+map [normal]     b toggle_statusbar
+map [fullscreen] b toggle_statusbar
