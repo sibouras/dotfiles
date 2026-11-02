@@ -644,4 +644,9 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Super+O { power-off-monitors; }
+
+    Ctrl+Alt+up { spawn-sh "niri msg output 'eDP-1' transform normal"; }
+    Ctrl+Alt+down { spawn-sh "niri msg output 'eDP-1' transform 180"; }
+    Ctrl+Alt+left { spawn-sh "niri msg output 'eDP-1' transform 90"; }
+    Ctrl+Alt+right { spawn-sh "niri msg output 'eDP-1' transform 270"; }
 }
