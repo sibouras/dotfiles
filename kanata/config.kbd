@@ -11,11 +11,11 @@ source of all key names: https://github.com/jtroo/kanata/blob/main/parser/src/ke
 
 (defsrc
   esc  f1   f2   f3   f4   f5   f6   f7   f8
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc    NumLock
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \       kp7 kp8 kp9
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret          kp4 kp5 kp6
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft              kp1 kp2 kp3
+  lctl lmet lalt           spc            ralt rmet rctl                   kp0 kp.
 )
 
 ;; Variables
@@ -30,17 +30,29 @@ source of all key names: https://github.com/jtroo/kanata/blob/main/parser/src/ke
   td (tap-dance 150 (1 grv))
   atl (multi alt (layer-while-held alt-layer))
   mctl (multi lctl (layer-while-held lctl-layer))
+
+  to-numpad (multi NumLock (layer-switch numpad-layer))
+  to-base (multi NumLock (layer-switch base))
 )
 
 ;; mmtp: tap middle mouse button
 
 (deflayer base
   esc    f1    f2    f3    f4   f5   f6   f7   f8
-  grv    1     2     3     4    5    6    7    8     bspc   0    -    =    bspc
-  tab    esc   w     e     r    t    y    u    i     o      p    [    ]    \
-  @cap   a     s     d     f    g    h    j    k     l      ;    '    ret
-  @shit  z     x     c     v    b    n    m    ,     .      /    @shit
-  @mctl  lmet  @atl             spc             ralt  rmet   rctl
+  grv    1     2     3     4    5    6    7    8     bspc   0    -    =    bspc    @to-numpad
+  tab    esc   w     e     r    t    y    u    i     o      p    [    ]    \       kp7  volu brup
+  @cap   a     s     d     f    g    h    j    k     l      ;    '    ret          prev volu next
+  @shit  z     x     c     v    b    n    m    ,     .      /    @shit             kp1  vold brdn
+  @mctl  lmet  @atl             spc             ralt  rmet   rctl                  mute pp
+)
+
+(deflayer numpad-layer
+  esc    f1    f2    f3    f4   f5   f6   f7   f8
+  grv    1     2     3     4    5    6    7    8     bspc   0    -    =    bspc    @to-base
+  tab    esc   w     e     r    t    y    u    i     o      p    [    ]    \       kp7 kp8 kp9
+  @cap   a     s     d     f    g    h    j    k     l      ;    '    ret          kp4 kp5 kp6
+  @shit  z     x     c     v    b    n    m    ,     .      /    @shit             kp1 kp2 kp3
+  @mctl  lmet  @atl             spc             ralt  rmet   rctl                  kp0 kp.
 )
 
 (defalias
@@ -52,11 +64,11 @@ source of all key names: https://github.com/jtroo/kanata/blob/main/parser/src/ke
 
 (deflayer caps-layer
   esc   f1    f2    f3    f4    pp    f6    prev  next
-  grv   pp    vold  volu  mute  lrld  6     7     8       C-bspc  9     -     =    bspc
-  tab   q     C-w   @mwd  @mwu  C-t   y     pgup  home    end     pgdn  C-[   C-]  ins
-  XX    lmet  lalt  lsft  lctl  menu  left  down  up      right   caps  del   ret
-  lsft  z     x     mmtp  mlft  b     @pp   @cm   C-pgup  C-pgdn  /     rsft
-  lctl  lmet  lalt              spc               ralt    rmet    rctl 
+  grv   pp    vold  volu  mute  lrld  6     7     8       C-bspc  9     -     =    bspc    NumLock
+  tab   q     C-w   @mwd  @mwu  C-t   y     pgup  home    end     pgdn  C-[   C-]  ins     _ _ _
+  XX    lmet  lalt  lsft  lctl  menu  left  down  up      right   caps  del   ret          _ _ _
+  lsft  z     x     mmtp  mlft  b     @pp   @cm   C-pgup  C-pgdn  /     rsft               _ _ _
+  lctl  lmet  lalt              spc               ralt    rmet    rctl                     _ _
 )
 
 ;; (deflayer shift-layer
