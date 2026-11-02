@@ -9,3 +9,5 @@ yazi/plugins/*
 /cheat/cheatsheets/community
 /nushell/history.txt
 /yazi/pref-by-location
+/mpv/input_default.conf
+/mpv/mpv_default.conf
