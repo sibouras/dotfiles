@@ -8,6 +8,6 @@ else
   curl -fsSL https://get.pnpm.io | sh -
 fi
 
-pnpm completion bash > ~/.local/share/bash-completion/completions/pnpm
-pnpm completion zsh > ~/.local/share/zsh-completion/_pnpm
-pnpm completion fish > ~/.config/fish/completions/pnpm.fish
+~/.local/share/pnpm/bin/pnpm completion bash > ~/.local/share/bash-completion/completions/pnpm
+~/.local/share/pnpm/bin/pnpm completion zsh > ~/.local/share/zsh-completion/_pnpm
+~/.local/share/pnpm/bin/pnpm completion fish > ~/.config/fish/completions/pnpm.fish

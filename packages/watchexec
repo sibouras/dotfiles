@@ -2,4 +2,8 @@
 
 # https://github.com/watchexec/watchexec
 
-sudo dra download -i -s "watchexec-{tag}-x86_64-unknown-linux-gnu.deb" watchexec/watchexec
+if command -v apt &> /dev/null; then
+  sudo dra download -i -s "watchexec-{tag}-x86_64-unknown-linux-gnu.deb" watchexec/watchexec
+elif command -v dnf &> /dev/null; then
+  sudo dra download -i -s "watchexec-{tag}-x86_64-unknown-linux-gnu.rpm" watchexec/watchexec
+fi
