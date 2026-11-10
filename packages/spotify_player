@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/aome510/spotify-player
+
+dra download -i -s "spotify_player-x86_64-unknown-linux-gnu.tar.gz" -o ~/.local/bin/spotify_player aome510/spotify-player

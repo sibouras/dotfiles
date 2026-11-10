@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/Bahaaio/pomo
+
+dra download -i -s "pomo_Linux_x86_64.tar.gz" -o ~/.local/bin/pomo Bahaaio/pomo

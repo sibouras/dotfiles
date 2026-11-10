@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/bugzmanov/bookokrat
+
+dra download -i -s "bookokrat-v{tag}-x86_64-unknown-linux-gnu.tar.gz" -o ~/.local/bin/bookokrat bugzmanov/bookokrat

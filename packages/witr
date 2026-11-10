@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# https://github.com/pranshuparmar/witr
+
+# install binary to ~/.local/bin/witr and manpage to ~/.local/share/man/man1/witr.1
+curl -fsSL https://raw.githubusercontent.com/pranshuparmar/witr/main/install.sh | INSTALL_PREFIX="$HOME/.local" bash
