@@ -1,0 +1,190 @@
+require 'mp'
+require 'mp.msg'
+
+-- Copy:
+-- Filename or URL              (CTRL+f)
+-- Full Filename Path           (CTRL+p)
+-- Video Title                  (CTRL+T)
+-- Current Video Time           (CTRL+t)
+-- Current Video Duration       (CTRL+d)
+-- Current Displayed Subtitle   (CTRL+s)
+-- Video Metadata               (CTRL+m)
+
+WINDOWS = 2
+UNIX = 3
+
+local function platform_type()
+    local utils = require 'mp.utils'
+    local workdir = utils.to_string(mp.get_property_native("working-directory"))
+    mp.msg.debug(string.format("The workdir is: %s", workdir))
+
+    -- Support drive letter and UNC path for windows.
+    if string.match(workdir, "^\"%a:\\") or string.match(workdir, "^\"\\\\") then
+        mp.msg.debug("The platform is windows")
+        return WINDOWS
+    else
+        mp.msg.debug("The platform is unix")
+        return UNIX
+    end
+end
+
+local function command_exists(cmd)
+    local pipe = io.popen("type " .. cmd .. " > /dev/null 2> /dev/null; printf \"$?\"", "r")
+    exists = pipe:read() == "0"
+    pipe:close()
+    return exists
+end
+
+local function get_clipboard_cmd()
+    -- attempt to decide by current session's type
+    -- The environment variable is not a Freedesktop standard, but a Systemd one. For possible values see `man 8 pam_systemd`
+    local session_type = os.getenv("XDG_SESSION_TYPE")
+    if session_type == "wayland" then
+        if command_exists("wl-copy") then
+            return "wl-copy"
+        else
+            mp.msg.error("MPV is running in a wayland environment, but suitable command was not found")
+        end
+    elseif session_type == "x11" then
+        if command_exists("xclip") then
+            return "xclip -silent -in -selection clipboard"
+        else
+            mp.msg.error("MPV is running in an X11 environment, but suitable command was not found")
+        end
+    end
+
+    -- fallback to whatever is available
+    if command_exists("xclip") then
+        return "xclip -silent -in -selection clipboard"
+    elseif command_exists("wl-copy") then
+        return "wl-copy"
+    elseif command_exists("pbcopy") then
+        return "pbcopy"
+    else
+        mp.msg.error("No supported clipboard command found")
+        return false
+    end
+end
+
+local function set_clipboard(text)
+    if platform == WINDOWS then
+        mp.commandv("run", "powershell", "set-clipboard", table.concat({'"', text, '"'}))
+        return true
+    elseif (platform == UNIX and clipboard_cmd) then
+        local pipe = io.popen(clipboard_cmd, "w")
+        pipe:write(text)
+        pipe:close()
+        return true
+    else
+        mp.msg.error("Set_clipboard error")
+        return false
+    end
+end
+
+-- Copy Time
+local function copyTime()
+    local time = mp.get_property_osd("time-pos/full")
+
+    if set_clipboard(time) then
+        mp.osd_message(string.format("Time Copied to Clipboard: %s", time))
+    else
+        mp.osd_message("Failed to copy time to clipboard")
+    end
+end
+
+
+-- Copy Title
+local function copyTitle()
+    local title = string.format("%s", mp.get_property_osd("media-title"))
+    if set_clipboard(title) then
+        mp.osd_message(string.format("Title Copied to Clipboard: %s", title))
+    else
+        mp.osd_message("Failed to copy title to clipboard")
+    end
+end
+
+-- Copy Filename with Extension
+local function copyFilename()
+    local filename = string.format("%s", mp.get_property_osd("filename"))
+    local extension = string.match(filename, "%.(%w+)$")
+
+    local succ_message = "Filename Copied to Clipboard"
+    local fail_message = "Failed to copy filename to clipboard"
+
+    -- If filename doesn't have an extension then it is a URL.
+    if not extension then
+        filename = mp.get_property_osd("path")
+
+        succ_message = "URL Copied to Clipboard"
+        fail_message = "Failed to copy URL to clipboard"
+    end
+
+    if set_clipboard(filename) then
+        mp.osd_message(string.format("%s: %s", succ_message, filename))
+    else
+        mp.osd_message(string.format("%s", fail_message))
+    end
+end
+
+-- Copy Full Filename Path
+local function copyFullPath()
+    local full_path = mp.get_property_osd("path")
+
+    if set_clipboard(full_path) then
+        mp.osd_message(string.format("Full Filename Path Copied to Clipboard: %s", full_path))
+    else
+        mp.osd_message("Failed to copy full filename path to clipboard")
+    end
+end
+
+-- Copy Current Displayed Subtitle
+local function copySubtitle()
+    local subtitle = string.format("%s", mp.get_property_osd("sub-text"))
+
+    if subtitle == "" then
+        mp.osd_message("There are no displayed subtitles.")
+        return
+    end
+
+    if set_clipboard(subtitle) then
+        mp.osd_message(string.format("Displayed Subtitle Copied to Clipboard: %s", subtitle))
+    else
+        mp.osd_message("Failed to copy displayed subtitle to clipboard")
+    end
+end
+
+-- Copy Current Video Duration
+local function copyDuration()
+    local duration = string.format("%s", mp.get_property_osd("duration"))
+
+    if set_clipboard(duration) then
+        mp.osd_message(string.format("Video Duration Copied to Clipboard: %s", duration))
+    else
+        mp.osd_message("Failed to copy video duration to clipboard")
+    end
+end
+
+-- Copy Current Video Metadata
+local function copyMetadata()
+    local metadata = string.format("%s", mp.get_property_osd("metadata"))
+
+    if set_clipboard(metadata) then
+        mp.osd_message(string.format("Video Metadata Copied to Clipboard: %s", metadata))
+    else
+        mp.osd_message("Failed to copy metadata to clipboard")
+    end
+end
+
+platform = platform_type()
+if platform == UNIX then
+    clipboard_cmd = get_clipboard_cmd()
+end
+
+-- Key-Bindings
+mp.add_key_binding("Ctrl+t", "copyTime", copyTime)
+mp.add_key_binding("Ctrl+T", "copyTitle", copyTitle)
+mp.add_key_binding("Ctrl+f", "copyFilename", copyFilename)
+mp.add_key_binding("Ctrl+F", "copyFullPath", copyFullPath)
+mp.add_key_binding("Ctrl+c", "copySubtitle", copySubtitle)
+mp.add_key_binding("Ctrl+d", "copyDuration", copyDuration)
+mp.add_key_binding("Ctrl+m", "copyMetadata", copyMetadata)
