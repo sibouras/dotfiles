@@ -31,6 +31,9 @@ source of all key names: https://github.com/jtroo/kanata/blob/main/parser/src/ke
   atl (multi alt (layer-while-held alt-layer))
   mctl (multi lctl (layer-while-held lctl-layer))
 
+  volu10 (cmd wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0)
+  vold10 (cmd wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-)
+
   to-numpad (multi NumLock (layer-switch numpad-layer))
   to-base (multi NumLock (layer-switch base))
 )
@@ -40,9 +43,9 @@ source of all key names: https://github.com/jtroo/kanata/blob/main/parser/src/ke
 (deflayer base
   esc    f1    f2    f3    f4   f5   f6   f7   f8
   grv    1     2     3     4    5    6    7    8     bspc   0    -    =    bspc    @to-numpad
-  tab    esc   w     e     r    t    y    u    i     o      p    [    ]    \       kp7  volu brup
+  tab    esc   w     e     r    t    y    u    i     o      p    [    ]    \       @volu10 volu brup
   @cap   a     s     d     f    g    h    j    k     l      ;    '    ret          prev volu next
-  @shit  z     x     c     v    b    n    m    ,     .      /    @shit             kp1  vold brdn
+  @shit  z     x     c     v    b    n    m    ,     .      /    @shit             @vold10 vold brdn
   @mctl  lmet  @atl             spc             ralt  rmet   rctl                  mute pp
 )
 
