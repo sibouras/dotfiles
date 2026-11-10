@@ -601,6 +601,8 @@ binds {
     // set-column-width "100" will make the column occupy 200 physical screen pixels.
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
+    Mod+Ctrl+Minus { set-column-width "-1%"; }
+    Mod+Ctrl+Equal { set-column-width "+1%"; }
 
     // Finer height adjustments when in column with other windows.
     Mod+Shift+Minus { set-window-height "-10%"; }
