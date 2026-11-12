@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/tranxuanthang/lrcget
+
+sudo dra download -i -s "lrcget-{tag}-1.x86_64.rpm" tranxuanthang/lrcget
