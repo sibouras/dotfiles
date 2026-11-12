@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/natsukagami/mpd-mpris
+
+dra download -i -s "mpd-mpris_{tag}_linux_amd64.tar.gz" -o ~/.local/bin/mpd-mpris natsukagami/mpd-mpris
