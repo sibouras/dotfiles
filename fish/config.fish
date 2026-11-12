@@ -8,20 +8,16 @@ set fish_pager_color_progress brblue --bold
 # Supresses fish's intro message
 set fish_greeting
 
-### Adding to path
-fish_add_path ~/.local/bin
-fish_add_path ~/.local/wsl-scripts
-fish_add_path ~/.cargo/bin
-fish_add_path ~/src/fzf/bin
-fish_add_path ~/src/nvim/bin
-fish_add_path ~/.local/share/nvim/mason/bin
-
 ### Environment variables
 set -gx XDG_CACHE_HOME $HOME/.cache
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_STATE_HOME $HOME/.local/state
 
+set -gx BUN_INSTALL $HOME/.bun
+set -gx PNPM_HOME $XDG_DATA_HOME/pnpm
+set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
+set -gx CARGO_HOME $XDG_DATA_HOME/cargo
 set -gx EDITOR nvim
 set -gx HELIX_RUNTIME ~/src/helix/runtime
 set -gx FZF_DEFAULT_OPTS_FILE ~/.config/fzf/fzfrc
@@ -38,13 +34,16 @@ set -gx MANROFFOPT -c
 # set -gx LS_COLORS (vivid generate my_tokyonight-night)
 source ~/.config/fish/ls_colors.fish
 
-# bun
-set -gx BUN_INSTALL "$HOME/.bun"
+### Adding to path
+fish_add_path ~/.local/bin
+fish_add_path ~/.local/wsl-scripts
+fish_add_path ~/src/fzf/bin
+fish_add_path ~/src/nvim/bin
+fish_add_path ~/.local/share/nvim/mason/bin
+fish_add_path ~/.deno/bin
 fish_add_path $BUN_INSTALL/bin
-
-# pnpm
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 fish_add_path $PNPM_HOME/bin
+fish_add_path $CARGO_HOME/bin
 
 ### bindings, get key with fish_key_reader
 bind ctrl-o __fish_preview_current_file
@@ -80,6 +79,7 @@ alias lt 'eza --tree --icons --group-directories-first'
 alias reload 'source ~/.config/fish/config.fish'
 alias start '/mnt/c/Windows/explorer.exe'
 alias mypath 'echo "$PATH" | sed "s/:/\n/g"'
+alias sub 'python ~/src/OpenSubtitlesDownload.py --cli'
 
 ### functions
 function yy
