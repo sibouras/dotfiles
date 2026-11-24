@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# https://github.com/pdfcpu/pdfcpu
+
+dra download -i -s "pdfcpu_{tag}_Linux_x86_64.tar.xz" -o ~/.local/bin/pdfcpu pdfcpu/pdfcpu
+
+pdfcpu completion bash > ~/.local/share/bash-completion/completions/pdfcpu
+pdfcpu completion zsh > ~/.local/share/zsh-completion/_pdfcpu
+pdfcpu completion fish > ~/.config/fish/completions/pdfcpu.fish
